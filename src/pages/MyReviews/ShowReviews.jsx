@@ -2,31 +2,50 @@ import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { AiTwotoneDelete } from "react-icons/ai";
 
-const ShowReviews = ({ rev,setReRender,reRender }) => {
+const ShowReviews = ({ rev, setReRender, reRender }) => {
   const [edit, setEdit] = useState(false);
-  const { _id,customerEmail, customerName, placeName, reviewBody, reviewTitle } =
-    rev;
+  const {
+    _id,
+    customerEmail,
+    customerName,
+    placeName,
+    reviewBody,
+    reviewTitle,
+  } = rev;
   const formHandler = (e) => {
     e.preventDefault();
     const form = e.target;
     const title = form.reviewTitle.value;
     const body = form.reviewBody.value;
-    const review = {title,body}
-    fetch(`http://localhost:3000/review/${_id}`,{
-        method:"PUT",
-        headers:{
-            'content-type':'application/json'
-        },
-        body:JSON.stringify(review)
+    const review = { title, body };
+    fetch(`http://localhost:3000/review/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
     })
-    .then(res => res.json())
-    .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         // console.log(data)
-        const status = data.status
-        if(status){
-            setReRender(!reRender)
+        const status = data.status;
+        if (status) {
+          setReRender(!reRender);
         }
+      });
+  };
+  const deleteOperation = () => {
+    fetch(`http://localhost:3000/review/${_id}`, {
+      method: "DELETE",
     })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        const status = data.status;
+        if (status) {
+          setReRender(!reRender);
+        }
+      });
   };
   return (
     <tbody>
@@ -61,16 +80,20 @@ const ShowReviews = ({ rev,setReRender,reRender }) => {
                 }`}
               />{" "}
             </p>
-            
-          <input onClick={()=>setEdit(false)} type={`${edit?"submit":"hidden"}`} value="Submit"  className="border-2 border-black mt-1 rounded-lg font-semibold btn-sm "/>
-           
+
+            <input
+              onClick={() => setEdit(false)}
+              type={`${edit ? "submit" : "hidden"}`}
+              value="Submit"
+              className="border-2 border-black mt-1 rounded-lg font-semibold btn-sm "
+            />
           </form>
         </td>
         <td className="md:w-1/6">
           <button className="btn" onClick={() => setEdit(!edit)}>
             <CiEdit />
           </button>
-          <button>
+          <button onClick={deleteOperation}>
             <AiTwotoneDelete />
           </button>
         </td>
