@@ -4,6 +4,12 @@ import Main from "../Layout/Main";
 import Home from "../pages/Home/Home";
 import Services from "../pages/Services/Services";
 import Secondary from "../Layout/Secondary";
+import SignIn from "../pages/Auth/SignIn";
+import SignUp from "../pages/Auth/SignUp";
+import Third from "../Layout/Third";
+import Blog from "../pages/Blog/Blog";
+import PrivateRoot from "./PrivateRoot";
+import ServiceDetails from "../pages/Services/ServiceDetails";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -25,8 +31,31 @@ const Root = () => {
       element: <Secondary />,
       children: [
         {
-          path: "/service",
+          path: "/services",
           element: <Services />,
+        },
+        {
+          path:'/services/:id',
+          element:<ServiceDetails/>,
+          loader:({params})=> fetch(`http://localhost:3000/services/${params.id}`)
+        },
+        {
+          path: "/blog",
+          element:<PrivateRoot> <Blog /></PrivateRoot>
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: <Third />,
+      children: [
+        {
+          path: "/signIn",
+          element: <SignIn />,
+        },
+        {
+          path: "/signUp",
+          element: <SignUp />,
         },
       ],
     },

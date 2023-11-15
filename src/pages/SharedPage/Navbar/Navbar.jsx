@@ -1,60 +1,124 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "/src/assets/logo1.png";
+import React, { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
+import logo from "/src/assets/logo7 (1).png";
+import "./Navbar.css";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
-import { BiSearchAlt2 } from "react-icons/bi";
+import { PiSignOutBold } from "react-icons/pi";
+import { MdOutlineAccountCircle } from "react-icons/md";
+
+import { AuthProvider } from "../../../Context/UserContext";
+import { toast } from "react-toastify";
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const navIcon = (
-    <>
-      <Link to="/home ">
-        <li>Home</li>
-      </Link>
-      <Link to="/service ">
-        <li>Service</li>
-      </Link>
-      <Link to="/Blog ">
-        <li>Blog</li>
-      </Link>
-    </>
-  );
+  const { user, signOutAuth, navHandler, navControl } =
+    useContext(AuthProvider);
+  const signOut = () => {
+    signOutAuth()
+      .then(() => {
+        toast("You are successfully log-Out");
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+  const multipleFuncActive = () => {
+    setShow(!show);
+    navHandler(!navControl);
+  };
+  const multipleFuncDisable = () => {
+    navHandler(false);
+    setShow(false);
+  };
+
   return (
-    <div className="navbar w-full">
-      <div className="navbar-start gap-4">
-        <div className="">
-          <div onClick={() => setShow(!show)} className=" lg:hidden w-6 h-6 ">
-            {show ? <RxCross2 /> : <AiOutlineMenuUnfold />}
-          </div>
-          <ul onClick={()=>setShow(false)}
-            className={`menu menu-sm dropdown-content  z-[1] p-2 shadow bg-base-100 text-black  rounded-box w-52 lg:hidden font-semibold absolute  ${
-              show ? "w-full  md:w-1/2 lg:w-2/4 md:top-14 " : "left-[-320px] "
-            }`}
-          >
-            {navIcon}
-            <ul onClick={()=>setShow(false)}  className="navbar-end block md:hidden">
-              <Link to="/signUP ">
-                <li>Sign-Up</li>
-              </Link>
-              <Link to="/signIn ">
-                <li>Sign-In</li>
-              </Link>
-            </ul>
-          </ul>
+    <div className="flex flex-row-reverse lg:flex-row justify-between lg:justify-start items-center ">
+      <div className=" menu-item">
+        <div
+          onClick={multipleFuncActive}
+          className=" btn btn-circle btn-sm md:btn-md bg-transparent text-white mr-5  lg:hidden"
+        >
+          {show ? (
+            <RxCross2 className="w-5 h-5 md:w-6 md:h-6" />
+          ) : (
+            <AiOutlineMenuUnfold className="w-5 h-5 md:w-6 md:h-6" />
+          )}
         </div>
-        <img src={logo} className="w-16 md:w-28" />
+        <ul
+          id="menu-show-2"
+          onClick={multipleFuncDisable}
+          className={`text-xl pl-5 pt-5 shadow  rounded-box  lg:hidden font-bold absolute  ${
+            show
+              ? " menu-show  w-[80%] md:w-1/2  h-[100vh] top-0 left-0"
+              : "menu-hide  w-[80%] md:w-1/2 top-0 left-[-520px]"
+          }`}
+        >
+          <NavLink
+           
+            to="/home "
+          >
+            <li>Home</li>
+          </NavLink>
+          <NavLink to="/services">
+            <li>Service</li>
+          </NavLink>
+          <NavLink to="/blog ">
+            <li>Blog</li>
+          </NavLink>
+          {user?.email ? (
+            <NavLink
+              onClick={signOut}
+              to="/signIn"
+              className="tooltip flex items-center"
+              data-tip="Sign-Out"
+            >
+              <span className="font-bold">Log-out</span>
+              <PiSignOutBold className="ml-2 inline" />
+            </NavLink>
+          ) : (
+            <NavLink to="signIn" className="tooltip" data-tip="Sign-In">
+              <MdOutlineAccountCircle className="h-8 w-8" />
+            </NavLink>
+          )}
+        </ul>
       </div>
-      <div className="navbar-center  hidden lg:flex">
-        <ul className="menu menu-horizontal font-semibold text-lg px-1 gap-4">{navIcon}</ul>
+      <div className="w-36 md:w-40">
+        <img src={logo} className="w-28 md:w-32 md:h-24 " />
       </div>
-      <ul className="navbar-end gap-5 font-semibold text-lg hidden md:flex">
-        <Link to="/signUP ">
-          <li>Sign-Up</li>
-        </Link>
-        <Link to="/signIn ">
-          <li>Sign-In</li>
-        </Link>
-      </ul>
+      <div className="navbar-center  hidden lg:flex  mx-auto">
+        <ul className="menu menu-horizontal font-semibold text-lg px-1 gap-4 menu-icon">
+          <NavLink
+           className={({ isActive }) => {
+              isActive ? "" : "text-black";
+            }}
+            to="/home "
+          >
+            <li >Home</li>
+          </NavLink>
+          <NavLink to="/services">
+            <li>Service</li>
+          </NavLink>
+          <NavLink to="/blog ">
+            <li>Blog</li>
+          </NavLink>
+        </ul>
+      </div>
+      <div className=" hidden lg:flex mr-5 ">
+        {user?.email ? (
+          <NavLink
+            onClick={signOut}
+            to="/signIn"
+            className="tooltip"
+            data-tip="Sign-Out"
+          >
+            <PiSignOutBold className="h-8 w-8" />
+          </NavLink>
+        ) : (
+          <NavLink to="signIn" className="tooltip" data-tip="Sign-In">
+            <MdOutlineAccountCircle className="h-8 w-8" />
+          </NavLink>
+        )}
+      </div>
     </div>
   );
 };

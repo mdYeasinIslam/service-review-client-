@@ -1,0 +1,67 @@
+[
+    {
+        "name":"Nilgiri Bandarban",
+        "placeId":1,
+        "img":"https://i.ibb.co/FxkPTJ9/Bandarban.jpg",
+        "details":"Sangu River is the complete element of the natural beauty of Bandarban. It follows a northernly circuitous course in the hill tracts up to Bandarban. It enters the district from the east and flows west across the district and finally falls into the bay of Bengal at the end of a course of 270 km.",
+        "price":7000,
+        "rating":3
+
+    },
+    {
+        "name":"COX's Bazar",
+        "placeId":2,
+        "img":"https://i.ibb.co/KWkspTv/coxs-bazar-chittagong.webp",
+        "details":"There are 34 tourist attractions found in Chittagong. This is 18% of all tourist attractions listed in Chittagong Division. The major types of tourist attractions listed here are amusement parks and nature attractions",
+        "price":9000,
+        "rating":3
+    },
+    {
+        "name":"Dhaka Ahsan-Manjil",
+        "placeId":3,
+        "img":"https://i.ibb.co/b31vWFt/Dhaka-Ahsan-Manjil.jpg",
+        "details":"There are around 200 tourist attractions in Dhaka Division. This is 21% of all tourist attractions listed in Bangladesh. Top districts in Dhaka Division with popular tourist destinations are Dhaka, Narayanganj, Gazipur, Savar and Narsingdi. The major types of tourist attractions listed here are landmarks and amusement parks. Then there is also museums listed in Dhaka Division.",
+        "price":5000,
+        "rating":3
+    },
+    {
+        "name":"Kuakata Sea-beach",
+        "placeId":4,
+        "img":"https://i.ibb.co/yykhjYF/kuakata.jpg",
+        "details":"Wide sandy beach from where one can get the unique opportunity of seeing both the sunrise and sunset. It is located at a distance of 70 km. from the district headquaters of Patuakhali. Parjatan Holiday Homes at Kuakata offers a number of facilities for the tourists.",
+        "price":8000,
+        "rating":3
+    },
+    {
+        "name":"Kaptai-Lake Rangamati",
+        "placeId":5,
+        "img":"https://i.ibb.co/g7dRrq7/Rangamati.jpg",
+        "details":"Rangamati is also famous for cashew nut, water melon, Bangla Banana, fresh fishes of Kaptai lake. The district is also known to all for having a hydraulic Power Plant at Kaptai and Terrestrial Earth Satellite at Betbunia, Kawkhli.",
+        "price":6000,
+        "rating":3
+    },
+    {
+        "name":"SUNDARBAN",
+        "placeId":6,
+        "img":"https://i.ibb.co/KbqFpMH/sundarban.jpg",
+        "details":"Wonderful flora and fauna, divergent wildlife, paramount beauty of green canopy, thousands of meandering Streams, rivers, creeks made this forest one of the great eco-tourism attractions. The forest is famous as the primitive abode of the royal Bengal Tiger, the strongest, and most beautiful wild animal of the world.",
+        "price":8500,
+        "rating":3
+    },
+    {
+        "name":"Jaflong Sylhet",
+        "placeId":7,
+        "img":"https://i.ibb.co/SPd5sYf/Sylhet.jpg",
+        "details":"Tourist attractions outside the city include Ratargul Swamp Forest, Bisnakandi, Bholaganj SadaPathor, Jaflong, Lalakhal, Khadimnagar Rain Forest, Sreemangal and many more!",
+        "price":10000,
+        "rating":3
+    },
+    {
+        "name":"Nikhli Howr Kishoreganj",
+        "placeId":8,    
+        "img":"https://i.ibb.co/0DR4dWQ/Kishoreganj.jpg",
+        "details":"In the sector of history, heritage and tourism, the Kishoreganj district is potential district in Bangladesh. There are lakes, Sadi Shrine Mosque, Shah Mahmood Mosque, Bebuda’s lakes, ponds, Bheluya Sunduri Lke etc in the district of Kishoreganj. In the rainy season the villages are shaken in the water, this incomparable beauty of deep waters attract to the local and foreign visitors in this district",
+        "price":5000,
+        "rating":3
+    }
+]
