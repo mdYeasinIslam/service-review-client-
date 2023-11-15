@@ -27,10 +27,11 @@
   opacity: 0.9;
 }
 .transition-style1{
-  transition: 0.7s;
+  transition: 3s !important
 }
 .transition-style2{
-  transition: 4s;
+  z-index: 1;
+  transition: 4s !important
 }
 
 .body-card { 

@@ -50,7 +50,7 @@ const Navbar = () => {
           className={`text-xl pl-5 pt-5 shadow  rounded-box  lg:hidden font-bold absolute  ${
             show
               ? " menu-show  w-[80%] md:w-1/2  h-[100vh] top-0 left-0"
-              : "menu-hide  w-[80%] md:w-1/2 top-0 left-[-520px]"
+              : "menu-hide  w-[80%] md:w-1/2 top-0 left-[-620px]"
           }`}
         >
           <NavLink
@@ -88,9 +88,6 @@ const Navbar = () => {
       <div className="navbar-center  hidden lg:flex  mx-auto">
         <ul className="menu menu-horizontal font-semibold text-lg px-1 gap-4 menu-icon">
           <NavLink
-           className={({ isActive }) => {
-              isActive ? "" : "text-black";
-            }}
             to="/home "
           >
             <li >Home</li>

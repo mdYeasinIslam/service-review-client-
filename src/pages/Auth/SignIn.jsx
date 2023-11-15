@@ -59,7 +59,7 @@ const SignIn = () => {
          
         </div>
       </div>
-      <div className="hero min-h-screen bg-base-200 ">
+      <div className="hero pt-10 bg-base-200 ">
  
           <div className="card flex-shrink-0 w-[80%] md:w-[70%] lg:w-[50%]  shadow-2xl bg-base-100">
             <h3 className="text-2xl text-center font-bold mt-4">Log-In Now</h3>
