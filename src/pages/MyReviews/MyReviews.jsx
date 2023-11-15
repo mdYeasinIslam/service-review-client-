@@ -5,6 +5,7 @@ import ShowReviews from "./ShowReviews";
 const MyReviews = () => {
   const { navControl, user } = useContext(AuthProvider);
   const [reviews, setReviews] = useState([]);
+  const [reRender,setReRender] = useState(true)
   useEffect(() => {
     fetch(`http://localhost:3000/review`)
       .then((res) => res.json())
@@ -16,8 +17,8 @@ const MyReviews = () => {
         // console.log(filter)
         setReviews(filter);
       });
-  }, []);
-  console.log(reviews);
+  }, [reRender]);
+//   console.log(reRender);
   return (
     <div>
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage`}>
@@ -45,7 +46,7 @@ const MyReviews = () => {
           </thead>
           {/* tbody */}
           {reviews.map((rev) => (
-            <ShowReviews key={rev._id} rev={rev} />
+            <ShowReviews key={rev._id} rev={rev} setReRender={setReRender} reRender={reRender} />
           ))}
         </table>
       </div>
