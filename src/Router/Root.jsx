@@ -10,6 +10,8 @@ import Third from "../Layout/Third";
 import Blog from "../pages/Blog/Blog";
 import PrivateRoot from "./PrivateRoot";
 import ServiceDetails from "../pages/Services/ServiceDetails";
+import Myreviews from "../pages/MyReviews/Myreviews";
+import MyReviews from "../pages/MyReviews/Myreviews";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -43,6 +45,10 @@ const Root = () => {
           path: "/blog",
           element:<PrivateRoot> <Blog /></PrivateRoot>
         },
+        {
+          path:'/my-reviews',
+          element:<PrivateRoot><MyReviews/></PrivateRoot>
+        }
       ],
     },
     {

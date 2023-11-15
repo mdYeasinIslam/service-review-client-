@@ -65,6 +65,9 @@ const Navbar = () => {
           <NavLink to="/blog ">
             <li>Blog</li>
           </NavLink>
+          <NavLink to="/my-reviews ">
+            <li>My-Reviews</li>
+          </NavLink>
           {user?.email ? (
             <NavLink
               onClick={signOut}
@@ -97,6 +100,9 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/blog ">
             <li>Blog</li>
+          </NavLink>
+          <NavLink to="/my-reviews ">
+            <li>My-Reviews</li>
           </NavLink>
         </ul>
       </div>
