@@ -12,6 +12,8 @@ import PrivateRoot from "./PrivateRoot";
 import ServiceDetails from "../pages/Services/ServiceDetails";
 import Myreviews from "../pages/MyReviews/Myreviews";
 import MyReviews from "../pages/MyReviews/Myreviews";
+import AddServices from "../pages/Add-Services/AddServices";
+import Details from "../pages/Home/Display-services/Details";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -26,6 +28,12 @@ const Root = () => {
           path: "/home",
           element: <Home />,
         },
+        {
+          path:'/home/:id',
+          element:<Details/>,
+          
+
+        }
       ],
     },
     {
@@ -48,7 +56,11 @@ const Root = () => {
         {
           path:'/my-reviews',
           element:<PrivateRoot><MyReviews/></PrivateRoot>
-        }
+        },
+        {
+          path:'/add-service',
+          element:<PrivateRoot><AddServices/></PrivateRoot>
+        },
       ],
     },
     {

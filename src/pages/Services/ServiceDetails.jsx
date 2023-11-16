@@ -5,14 +5,14 @@ import { RxStarFilled } from "react-icons/rx";
 import Review from "./ServiceReview/Review";
 import Description from "./Description/Description";
 import { AuthProvider } from "../../Context/UserContext";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const ServiceDetails = () => {
 const {navControl} = useContext(AuthProvider)
   const service = useLoaderData();
 const [selector ,setSelector] = useState(false)
-  const { _id, img, name, price, rating, details } = service;
+const { _id, img, name, price, rating, details } = service;
  
-
   return (
     <div className="pb-10 bg-base-300">
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage mb-10`}>
@@ -25,17 +25,18 @@ const [selector ,setSelector] = useState(false)
       </div>
       {/* service details */}
       <div className="grid md:grid-cols-2 w-[95%] mx-auto ">
-        <div className="w-full">
-          <figure className="  md:w-[90%] mx-auto ">
+       
+          <PhotoProvider className="w-full">
+            <PhotoView src={img}>
             <img
               src={img}
               alt=""
               className="w-full md:h-[25rem] lg:h-[30rem] rounded-xl "
-            />
-          </figure>
-        </div>
+            /></PhotoView>
+          </PhotoProvider>
+    
 
-        <div>
+        <div className="pl-5">
           <div>
             <h1 className="font-[800] text-4xl">{name}</h1>
             <p className="text-2xl mt-5 mb-10">BDT. {price}</p>

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthProvider } from "../../Context/UserContext";
-
+import img1 from '../../assets/image/TouristArea/Bandarban.jpg'
+import img2 from '../../assets/image/TouristArea/kuakata.jpg'
 const Blog = () => {
   const { navControl } = useContext(AuthProvider);
   const [open, setOpen] = useState(false);
@@ -20,57 +21,7 @@ const Blog = () => {
       </div>
       {/* The button to open modal */}
 
-      <div className="relative">
-        <button onClick={() => setOpen(!open)} className="btn ">
-          open modal
-        </button>
-        <div>
-          <h3>
-            hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-            nostrum, sint reprehenderit tenetur ipsa neque quia nesciunt fugit
-            vitae praesentium.
-          </h3>
-          <h3>
-            hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-            nostrum, sint reprehenderit tenetur ipsa neque quia nesciunt fugit
-            vitae praesentium.
-          </h3>
-          <h3>
-            hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-            nostrum, sint reprehenderit tenetur ipsa neque quia nesciunt fugit
-            vitae praesentium.
-          </h3>
-          <h3>
-            hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-            nostrum, sint reprehenderit tenetur ipsa neque quia nesciunt fugit
-            vitae praesentium.
-          </h3>
-          <h3>
-            hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-            nostrum, sint reprehenderit tenetur ipsa neque quia nesciunt fugit
-            vitae praesentium.
-          </h3>
-          <h3>
-            hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-            nostrum, sint reprehenderit tenetur ipsa neque quia nesciunt fugit
-            vitae praesentium.
-          </h3>
-          <h3>
-            hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-            nostrum, sint reprehenderit tenetur ipsa neque quia nesciunt fugit
-            vitae praesentium.
-          </h3>
-        </div>
-        <div
-          className={` w-1/2 h-52  bg-base-300 absolute ${
-            open ? "hidden" : "block top-0 right-[25%]"
-          }`}
-        >
-          <h2>Review</h2>
-          <input type="text" name="" id="" className="w-full my-1 py-1 rounded" />
-          <input type="text" name="" id="" className="w-full my-1 py-1 rounded " />
-          </div>{" "}
-      </div>
+     
     </div>
   );
 };

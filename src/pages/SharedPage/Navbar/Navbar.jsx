@@ -49,7 +49,7 @@ const Navbar = () => {
           onClick={multipleFuncDisable}
           className={`text-xl pl-5 pt-5 shadow  rounded-box  lg:hidden font-bold absolute  ${
             show
-              ? " menu-show  w-[80%] md:w-1/2  h-[100vh] top-0 left-0"
+              ? " menu-show  w-[80%] md:w-1/2  h-[100vh] top-0 left-0 text-white"
               : "menu-hide  w-[80%] md:w-1/2 top-0 left-[-620px]"
           }`}
         >
@@ -67,6 +67,9 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/my-reviews ">
             <li>My-Reviews</li>
+          </NavLink>
+          <NavLink to="/add-service ">
+            <li>Add-Service</li>
           </NavLink>
           {user?.email ? (
             <NavLink
@@ -103,6 +106,9 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/my-reviews ">
             <li>My-Reviews</li>
+          </NavLink>
+          <NavLink to="/add-service ">
+            <li>Add-Service</li>
           </NavLink>
         </ul>
       </div>

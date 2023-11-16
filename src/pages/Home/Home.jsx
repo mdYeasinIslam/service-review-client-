@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Banner from "./Banner/Banner";
 import Service from "../Services/Service";
 import { Link } from "react-router-dom";
+import CustomServices from "./Display-services/CustomServices";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -16,9 +17,10 @@ const Home = () => {
   return (
     <div>
       <Banner />
+      {/* Tourist Services */}
       <div className="">
-        <div className="text-center font-bold font-[cursive] mt-20 mb-10">
-          <h1 className="">Enjoy Holiday Tours</h1>
+        <div className="w-full text-center font-bold font-[cursive] mt-20 mb-10">
+          <h3 className="text-4xl md:text-5xl">Enjoy Holiday Tours</h3>
           <p className="">Pick The One Your Prefer</p>
         </div>
         <div>
@@ -36,6 +38,10 @@ const Home = () => {
             See more..-
           </button>
         </Link>
+      </div>
+      {/* Customize Services */}
+      <div className="w-full bg-base-300 ">
+        <CustomServices/>
       </div>
     </div>
   );
