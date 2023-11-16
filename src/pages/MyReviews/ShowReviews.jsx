@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { AiTwotoneDelete } from "react-icons/ai";
 
-const ShowReviews = ({ rev, setReRender, reRender }) => {
+const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,openModal}) => {
   const [edit, setEdit] = useState(false);
   const {
     _id,
@@ -40,17 +40,17 @@ const ShowReviews = ({ rev, setReRender, reRender }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         const status = data.status;
         if (status) {
           setReRender(!reRender);
         }
       });
   };
+
   return (
     <tbody>
       {/* row 1 */}
-
 
       <tr className="bg-base-200">
         {/* <th className="md:w-4">1</th> */}
@@ -92,7 +92,12 @@ const ShowReviews = ({ rev, setReRender, reRender }) => {
           </form>
         </td>
         <td className="md:w-1/6">
-          <button className="btn" onClick={() => setEdit(!edit)}>
+          <button
+            className="btn"
+            onClick={() => {
+              setEdit(!edit)
+            }}
+          >
             <CiEdit />
           </button>
           <button onClick={deleteOperation}>
@@ -100,31 +105,7 @@ const ShowReviews = ({ rev, setReRender, reRender }) => {
           </button>
         </td>
       </tr>
-      {/* <dialog id="my_modal_4" className="modal ">
-        <div className="modal-box w-11/12 max-w-5xl bg-[#213547] text-black">
-          <form method="dialog">
-           
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-              ✕
-            </button>
-          </form>
-          <h3 className="font-bold text-lg text-white">Edit your review :</h3>
-          <div>
-            <input
-              type="text"
-              name=""
-              placeholder={reviewBody}
-              className="border border-black w-full py-2 rounded-xl bg-base-300 "
-            />
-          </div>
-          <div className="modal-action">
-            <form method="dialog">
-             
-              <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog> */}
+ 
     </tbody>
   );
 };
