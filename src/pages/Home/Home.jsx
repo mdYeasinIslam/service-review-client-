@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Banner from "./Banner/Banner";
 import Service from "../Services/Service";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -29,10 +30,15 @@ const Home = () => {
         </div>
       </div>
       <div className="text-center py-10 transition-style2">
-        <button className="btn btn-success hover:bg-[#213547] hover:text-white">See more..-</button>
+        <Link to='/services'>
+        
+          <button className="btn btn-success hover:bg-[#213547] hover:text-white">
+            See more..-
+          </button>
+        </Link>
       </div>
     </div>
   );
-};
+}; 
 
 export default Home;

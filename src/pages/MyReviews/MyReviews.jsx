@@ -5,7 +5,7 @@ import ShowReviews from "./ShowReviews";
 const MyReviews = () => {
   const { navControl, user } = useContext(AuthProvider);
   const [reviews, setReviews] = useState([]);
-  const [reRender,setReRender] = useState(true)
+  const [reRender, setReRender] = useState(true);
   useEffect(() => {
     fetch(`http://localhost:3000/review`)
       .then((res) => res.json())
@@ -18,7 +18,7 @@ const MyReviews = () => {
         setReviews(filter);
       });
   }, [reRender]);
-//   console.log(reRender);
+  //   console.log(reRender);
   return (
     <div>
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage`}>
@@ -38,16 +38,29 @@ const MyReviews = () => {
           {/* head */}
           <thead className="border-2 border-dotted border-black">
             <tr>
-              <th></th>
+              {/* <th></th> */}
               <th>Tourist Area</th>
               <th>Review </th>
               <th>Edit / Delete</th>
             </tr>
           </thead>
           {/* tbody */}
-          {reviews.map((rev) => (
-            <ShowReviews key={rev._id} rev={rev} setReRender={setReRender} reRender={reRender} />
-          ))}
+          {reviews[1] ? (
+            <>
+              {reviews.map((rev) => (
+                <ShowReviews
+                  key={rev._id}
+                  rev={rev}
+                  setReRender={setReRender}
+                  reRender={reRender}
+                />
+              ))}
+            </>
+          ) : (
+            <>
+            <span className="loading loading-spinner w-8 h-8 text-success"></span>
+            </>
+          )}
         </table>
       </div>
     </div>

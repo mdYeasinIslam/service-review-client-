@@ -24,20 +24,23 @@ const Services = () => {
             navControl ? "transition-style1  " : "transition-style2 "
           } font-semibold text-center text-white`}
         >
-          <span className="text-4xl md:text-6xl block">
-            {" "}
-            Service Collection
-          </span>
+          <span className="text-4xl md:text-6xl block">Service Collection</span>
           <span className="text-xl md:text-2xl">Enjoy Our Services</span>
         </div>
       </div>
-      <div>
-        <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-[96%] mx-auto mt-10">
-          {services.map((service) => (
-            <Service key={service._id} service={service} />
-          ))}
+      {services[1] ? (
+        <div>
+          <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-[96%] mx-auto mt-10">
+            {services.map((service) => (
+              <Service key={service._id} service={service} />
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <p className="text-center py-3 ">
+          <span className="loading loading-spinner text-success w-8 h-8"></span>
+        </p>
+      )}
     </div>
   );
 };
