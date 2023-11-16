@@ -50,9 +50,9 @@ const MyReviews = () => {
                 <thead className="border-2 border-dotted border-black">
                   <tr>
                     {/* <th></th> */}
-                    <th>Tourist Area</th>
-                    <th>Review </th>
-                    <th>Edit / Delete</th>
+                    <th className="w-1/4">Tourist Area</th>
+                    <th className="w-full">Review </th>
+                    <th className="">Edit / Delete</th>
                   </tr>
                 </thead>
                 {reviews.map((rev) => (

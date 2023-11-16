@@ -14,6 +14,7 @@ import Myreviews from "../pages/MyReviews/Myreviews";
 import MyReviews from "../pages/MyReviews/Myreviews";
 import AddServices from "../pages/Add-Services/AddServices";
 import Details from "../pages/Home/Display-services/Details";
+import Profile from "../pages/Profile/Profile";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -33,7 +34,8 @@ const Root = () => {
           element:<Details/>,
           loader:({params})=>fetch(`http://localhost:3000/custom-service/${params.id}`)
 
-        }
+        },
+       
       ],
     },
     {
@@ -61,6 +63,11 @@ const Root = () => {
           path:'/add-service',
           element:<PrivateRoot><AddServices/></PrivateRoot>
         },
+        {
+          path:'/profile',
+          element:<PrivateRoot><Profile/></PrivateRoot>,
+
+        }
       ],
     },
     {

@@ -53,10 +53,7 @@ const Navbar = () => {
               : "menu-hide  w-[80%] md:w-1/2 top-0 left-[-620px]"
           }`}
         >
-          <NavLink
-           
-            to="/home "
-          >
+          <NavLink to="/home ">
             <li>Home</li>
           </NavLink>
           <NavLink to="/services">
@@ -93,10 +90,8 @@ const Navbar = () => {
       </div>
       <div className="navbar-center  hidden lg:flex  mx-auto">
         <ul className="menu menu-horizontal font-semibold text-lg px-1 gap-4 menu-icon">
-          <NavLink
-            to="/home "
-          >
-            <li >Home</li>
+          <NavLink to="/home ">
+            <li>Home</li>
           </NavLink>
           <NavLink to="/services">
             <li>Service</li>
@@ -114,14 +109,24 @@ const Navbar = () => {
       </div>
       <div className=" hidden lg:flex mr-5 ">
         {user?.email ? (
-          <NavLink
-            onClick={signOut}
-            to="/signIn"
-            className="tooltip"
-            data-tip="Sign-Out"
-          >
-            <PiSignOutBold className="h-8 w-8" />
-          </NavLink>
+          <div className="flex  gap-x-2">
+            <NavLink
+              onClick={signOut}
+              to="/signIn"
+              className="tooltip"
+              data-tip="Sign-Out"
+            >
+              <PiSignOutBold className="h-6 w-6" />
+            </NavLink>
+            <NavLink to='/profile'   className="tooltip"
+              data-tip="Profile">
+              <div className="avatar online">
+                <div className="w-8 h-8 rounded-full">
+                  <img src={ user?.photoURL}className=" " />
+                </div>
+              </div>
+            </NavLink>
+          </div >
         ) : (
           <NavLink to="signIn" className="tooltip" data-tip="Sign-In">
             <MdOutlineAccountCircle className="h-8 w-8" />

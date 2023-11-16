@@ -7,23 +7,24 @@ const AddServices = () => {
   const formHandler = (e) => {
     e.preventDefault();
     const form = e.target;
-    const serviceName = form.serviceName.value
+    const serviceName = form.serviceName.value;
     const serviceImg = form.serviceImg.value;
     const servicePrice = form.price.value;
-    const details = form.details.value
-    const serviceInfo = {serviceName,serviceImg,servicePrice,details}
+    const details = form.details.value;
+    const serviceInfo = { serviceName, serviceImg, servicePrice, details };
     // console.log(serviceInfo)
-    fetch(`http://localhost:3000/custom-service`,{
-        method:'POST',
-        headers:{
-            'content-type':'application/json'
-        },
-        body:JSON.stringify(serviceInfo)
-    }).then(res=>res.json())
-    .then(data =>{
-        console.log(data)
-        form.reset()
+    fetch(`http://localhost:3000/custom-service`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(serviceInfo),
     })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        form.reset();
+      });
   };
   return (
     <div className="font-[cursive]">
@@ -46,10 +47,13 @@ const AddServices = () => {
           </h1>
           <p className="text-center "> It should be related with tourism</p>
         </div>
-        <div className="flex mt-5 items-center">
-          <form onSubmit={formHandler} className="card-body w-1/2">
+        <div className="md:flex md:flex-row-reverse mt-5 items-center">
+          <figure className="md:w-1/2">
+            <img src={img} alt="" className="w-3/4 mx-auto" />
+          </figure>
+          <form onSubmit={formHandler} className="card-body md:w-1/2">
             <div className="form-control">
-                <label >Service-Name : </label>
+              <label>Service-Name : </label>
               <input
                 type="text"
                 name="serviceName"
@@ -59,7 +63,7 @@ const AddServices = () => {
               />
             </div>
             <div className="form-control">
-            <label >Service-Image (Optional) : </label>
+              <label>Service-Image (Optional) : </label>
 
               <input
                 type="text"
@@ -69,7 +73,7 @@ const AddServices = () => {
               />
             </div>
             <div className="form-control">
-            <label >Service-Price : </label>
+              <label>Service-Price : </label>
 
               <input
                 type="number"
@@ -80,7 +84,7 @@ const AddServices = () => {
               />
             </div>
             <div className="form-control">
-            <label >Service-Details : </label>
+              <label>Service-Details : </label>
 
               <input
                 type="text"
@@ -91,12 +95,9 @@ const AddServices = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary">Add-To-Db</button>
             </div>
           </form>
-          <figure className="w-1/2">
-            <img src={img} alt="" className="w-3/4 mx-auto" />
-          </figure>
         </div>
       </div>
     </div>

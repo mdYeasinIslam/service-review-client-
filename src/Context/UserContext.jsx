@@ -33,7 +33,7 @@ const google = () => {
 }
 useEffect(()=>{
     const subscribe = onAuthStateChanged(auth,currentUser =>{
-        // console.log(currentUser)
+        console.log(currentUser)
         setUser(currentUser)
         setLoading(true)
     })

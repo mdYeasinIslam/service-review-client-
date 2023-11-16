@@ -55,9 +55,9 @@ const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,op
       <tr className="bg-base-200">
         {/* <th className="md:w-4">1</th> */}
         <td className=" md:w-1/5 font-bold">{placeName}</td>
-        <td>
+        <td className="w-full">
           <form onSubmit={formHandler}>
-            <p className="font-semibold">
+            <p className="font-semibold ">
               Title :
               <input
                 type="text"
@@ -91,7 +91,7 @@ const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,op
             />
           </form>
         </td>
-        <td className="md:w-1/6">
+        <td className="w-full md:w-1/6">
           <button
             className="btn"
             onClick={() => {
