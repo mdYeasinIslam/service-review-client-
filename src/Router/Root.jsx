@@ -31,7 +31,7 @@ const Root = () => {
         {
           path:'/home/:id',
           element:<Details/>,
-          
+          loader:({params})=>fetch(`http://localhost:3000/custom-service/${params.id}`)
 
         }
       ],
