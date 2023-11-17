@@ -1,7 +1,7 @@
 import React from "react";
 
 const Description = ({ service }) => {
-  console.log(service);
+  // console.log(service);
   const { _id,name, details, price ,accomodation,meal,personalService} = service;
  
   return (

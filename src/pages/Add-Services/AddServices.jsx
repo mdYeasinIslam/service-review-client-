@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthProvider } from "../../Context/UserContext";
 import { Link } from "react-router-dom";
 import img from "../../assets/image/custom-service/travel-world.jpg";
+import { toast } from "react-toastify";
 const AddServices = () => {
   const { navControl } = useContext(AuthProvider);
   const formHandler = (e) => {
@@ -23,6 +24,7 @@ const AddServices = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        toast('Service is added successfully')
         form.reset();
       });
   };

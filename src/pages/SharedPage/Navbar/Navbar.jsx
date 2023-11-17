@@ -69,15 +69,25 @@ const Navbar = () => {
             <li>Add-Service</li>
           </NavLink>
           {user?.email ? (
-            <NavLink
-              onClick={signOut}
-              to="/signIn"
-              className="tooltip flex items-center"
-              data-tip="Sign-Out"
-            >
-              <span className="font-bold">Log-out</span>
-              <PiSignOutBold className="ml-2 inline" />
-            </NavLink>
+             <div className="flex justify-around items-center ">
+             <NavLink
+               onClick={signOut}
+               to="/signIn"
+               className="tooltip "
+               data-tip="Sign-Out"
+             >
+              <PiSignOutBold className="h-6 w-6 " /><span>logOut</span>
+             </NavLink>
+             <NavLink to='/profile'   className="tooltip "
+               data-tip="Profile">
+               <div className="avatar online">
+                 <div className="w-8 h-8 rounded-full">
+                  <img src={ user?.photoURL}className=" " alt="img" />
+                 </div>
+               </div>
+                 <p>Profile</p>
+             </NavLink>
+           </div >
           ) : (
             <NavLink to="signIn" className="tooltip" data-tip="Sign-In">
               <MdOutlineAccountCircle className="h-8 w-8" />
@@ -122,7 +132,7 @@ const Navbar = () => {
               data-tip="Profile">
               <div className="avatar online">
                 <div className="w-8 h-8 rounded-full">
-                  <img src={ user?.photoURL}className=" " />
+                  <img src={ user?.photoURL}className=" " alt="img" />
                 </div>
               </div>
             </NavLink>

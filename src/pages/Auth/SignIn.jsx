@@ -44,7 +44,8 @@ const SignIn = () => {
       .then((result) => {
         const user = result.user;
         navigate(from, { replace: true });
-        console.log(user);
+        toast('You are loged in successfully')
+        // console.log(user);
       })
       .catch((e) => setError(e.message));
   };

@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { AiTwotoneDelete } from "react-icons/ai";
+import { toast } from "react-toastify";
 
-const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,openModal}) => {
+const ShowReviews = ({
+  rev,
+  setReRender,
+  reRender,
+  getUpdateInfo,
+  setOpenModal,
+  openModal,
+}) => {
   const [edit, setEdit] = useState(false);
   const {
     _id,
@@ -11,6 +19,8 @@ const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,op
     placeName,
     reviewBody,
     reviewTitle,
+    date,
+    time,
   } = rev;
   const formHandler = (e) => {
     e.preventDefault();
@@ -31,6 +41,7 @@ const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,op
         const status = data.status;
         if (status) {
           setReRender(!reRender);
+          toast("Review is updated successfylly");
         }
       });
   };
@@ -44,6 +55,7 @@ const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,op
         const status = data.status;
         if (status) {
           setReRender(!reRender);
+          toast("Review is deleted successfylly");
         }
       });
   };
@@ -54,7 +66,9 @@ const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,op
 
       <tr className="bg-base-200">
         {/* <th className="md:w-4">1</th> */}
-        <td className=" md:w-1/5 font-bold">{placeName}</td>
+        <td className=" md:w-1/5 font-bold">
+          {placeName} <br /> <span>{date} ({time})</span>
+        </td>
         <td className="w-full">
           <form onSubmit={formHandler}>
             <p className="font-semibold ">
@@ -95,7 +109,7 @@ const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,op
           <button
             className="btn"
             onClick={() => {
-              setEdit(!edit)
+              setEdit(!edit);
             }}
           >
             <CiEdit />
@@ -105,7 +119,6 @@ const ShowReviews = ({ rev, setReRender, reRender,getUpdateInfo,setOpenModal ,op
           </button>
         </td>
       </tr>
- 
     </tbody>
   );
 };

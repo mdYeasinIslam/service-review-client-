@@ -15,6 +15,8 @@ import MyReviews from "../pages/MyReviews/Myreviews";
 import AddServices from "../pages/Add-Services/AddServices";
 import Details from "../pages/Home/Display-services/Details";
 import Profile from "../pages/Profile/Profile";
+import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
+import CheckOut from "../pages/CheckOutBox/CheckOut";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -30,50 +32,64 @@ const Root = () => {
           element: <Home />,
         },
         {
-          path:'/home/:id',
-          element:<Details/>,
-          loader:({params})=>fetch(`http://localhost:3000/custom-service/${params.id}`)
-
+          path: "/home/:id",
+          element: <Details />,
+          loader: ({ params }) =>
+            fetch(`http://localhost:3000/custom-service/${params.id}`),
         },
-       
-      ],
-    },
-    {
-      path: "/",
-      element: <Secondary />,
-      children: [
         {
           path: "/services",
           element: <Services />,
         },
         {
-          path:'/services/:id',
-          element:<ServiceDetails/>,
-          loader:({params})=> fetch(`http://localhost:3000/services/${params.id}`)
+          path: "/services/:id",
+          element: <ServiceDetails />,
+          loader: ({ params }) =>
+            fetch(`http://localhost:3000/services/${params.id}`),
         },
         {
           path: "/blog",
-          element:<PrivateRoot> <Blog /></PrivateRoot>
+          element: (
+            <PrivateRoot>
+              {" "}
+              <Blog />
+            </PrivateRoot>
+          ),
         },
         {
-          path:'/my-reviews',
-          element:<PrivateRoot><MyReviews/></PrivateRoot>
+          path: "/my-reviews",
+          element: (
+            <PrivateRoot>
+              <MyReviews />
+            </PrivateRoot>
+          ),
         },
         {
-          path:'/add-service',
-          element:<PrivateRoot><AddServices/></PrivateRoot>
+          path: "/add-service",
+          element: (
+            <PrivateRoot>
+              <AddServices />
+            </PrivateRoot>
+          ),
         },
         {
-          path:'/profile',
-          element:<PrivateRoot><Profile/></PrivateRoot>,
+          path: "/profile",
+          element: (
+            <PrivateRoot>
+              <Profile />
+            </PrivateRoot>
+          ),
+        },
+        {
+          path: "/services/shopping-cart/:id",
+          element: (
+            <PrivateRoot>
+              <ShoppingCart />
+            </PrivateRoot>
+          ),
+         
+        },
 
-        }
-      ],
-    },
-    {
-      path: "/",
-      element: <Third />,
-      children: [
         {
           path: "/signIn",
           element: <SignIn />,
@@ -83,6 +99,27 @@ const Root = () => {
           element: <SignUp />,
         },
       ],
+    },
+    {
+      path: "/",
+      element: <Secondary />,
+      children: [
+        {
+          path: "/services/check-out/:id",
+          element: (
+            <PrivateRoot>
+              <CheckOut />
+            </PrivateRoot>
+          ),
+          loader: ({ params }) =>
+          fetch(`http://localhost:3000/services/${params.id}`),
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: <Third />,
+      children: [],
     },
   ]);
   return (

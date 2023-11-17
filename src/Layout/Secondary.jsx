@@ -6,11 +6,11 @@ import Footer from '../pages/SharedPage/Footer/Footer';
 const Secondary = () => {
     return (
         <div>
-          <div className='absolute z-[1] w-full text-white'>
+          {/* <div className='bg-[#213547] w-full text-white'>
           <Navbar/>
-          </div>
+          </div> */}
             <Outlet/>
-            <Footer/>
+       
         </div>
     );
 };
