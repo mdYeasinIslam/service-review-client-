@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import baseImg from "../../assets/logo7 (1).png";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import TouristInfo from "./TouristInfo";
+import { AuthProvider } from "../../Context/UserContext";
 
 const CheckOut = () => {
   const servicedata = useLoaderData();
-  const [touristDetails,setTouristDetails]  = useState([])
+  const { user } = useContext(AuthProvider);
+  const [touristDetails, setTouristDetails] = useState([]);
   const [paymentDiv, setPaymentDiv] = useState(false);
   const [infoSubmitted, setInfoSubmitted] = useState(false);
-  const { name, price, rating, img, details,_id } = servicedata;
+  const { name, price, rating, img, details, _id } = servicedata;
   // console.log(servicedata)
   const formHandler = (e) => {
     e.preventDefault();
@@ -17,8 +20,17 @@ const CheckOut = () => {
     const state = form.state.value;
     const city = form.city.value;
     const address = form.address.value;
-    const contact = form.contact.value;
-    const touristInfo = { placeId:_id,name, state, city, address, contact };
+    const number = form.contact.value;
+    const email = form.email.value;
+    const touristInfo = {
+      placeId: _id,
+      name,
+      state,
+      city,
+      address,
+      email,
+      number,
+    };
     // console.log(touristInfo);
     fetch(`http://localhost:3000/tourist-Info`, {
       method: "POST",
@@ -32,34 +44,41 @@ const CheckOut = () => {
         console.log(data);
         if (data.status) {
           toast(data.message);
-          setInfoSubmitted(!infoSubmitted);
+          setInfoSubmitted(data.status);
+        } else {
+          toast(data.message);
+          setInfoSubmitted(data.status);
         }
         form.reset();
       });
   };
-  useEffect(() =>{
-    fetch('http://localhost:3000/tourist-Info')
-    .then(res => res.json())
-    .then(data => {
-      const filter = data.filter(d=> d.placeId == _id)
-      console.log(filter)
-      setTouristDetails(filter)
-    })
-  },[infoSubmitted])
+  useEffect(() => {
+    fetch("http://localhost:3000/tourist-Info")
+      .then((res) => res.json())
+      .then((data) => {
+        const filter = data.filter((d) => d.placeId == _id);
+        console.log(filter);
+        setTouristDetails(filter);
+      });
+  }, [infoSubmitted]);
+  console.log(infoSubmitted);
   return (
     <div>
-      <figure className="w-full bg-[#213547] text-center">
+      <figure className="w-full bg-[#213547] md:text-center">
         <img src={baseImg} alt="" className="h-28 mx-auto" />
       </figure>
 
       {/* <hr className="my-5 border-2 bg-[#213547] " /> */}
 
-      <div className="grid grid-cols-2 py-10">
-        <div className=" border-y-2 border-r-2 border-gray-300">
-          <div className=" ml-20 mr-3 ">
+      <div className="md:grid grid-cols-2 py-10 space-x-3">
+        <div className="md:grid justify-end border-y-2 border-r-2 rounded-xl border-gray-300 ">
+          <div className="w-[95%] mx-auto lg:w-full ">
             {infoSubmitted ? (
-              <div>
-                <p>Your Information is submitted for this package..</p>
+              <div className="relative top-20 font-bold text-xl">
+                <p>
+                  Your Information is submitted for this package. <br />
+                  Please wait untill we called...
+                </p>
               </div>
             ) : (
               <form onSubmit={formHandler}>
@@ -75,7 +94,7 @@ const CheckOut = () => {
                       name="name"
                       id=""
                       placeholder="Your Full Name"
-                      className="w-full border-2 rounded-xl bg-base-100 block p-3 "
+                      className="w-full border-2 rounded-xl bg-base-100  p-3 "
                       required
                     />
                   </div>
@@ -93,7 +112,7 @@ const CheckOut = () => {
                       name="city"
                       id=""
                       placeholder="City"
-                      className="border-2 rounded-xl bg-base-100 inline p-3  w-[49%] "
+                      className="border-2 rounded-xl bg-base-100  p-3  w-[49%] "
                       required
                     />
                   </div>
@@ -109,12 +128,22 @@ const CheckOut = () => {
                   </div>
                   <div>
                     <input
-                      type="text"
+                      type="number"
                       name="contact"
                       id=""
-                      placeholder="Your mobile number or email"
+                      placeholder="Your mobile number"
                       className="border-2 rounded-xl bg-base-100 w-full block p-3 "
                       required
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      name="email"
+                      id=""
+                      defaultValue={user?.email}
+                      className="border-2 rounded-xl bg-base-100 w-full block p-3 "
+                      readOnly
                     />
                   </div>
 
@@ -138,7 +167,7 @@ const CheckOut = () => {
           {paymentDiv == true && (
             <>
               <div className="my-10">
-                <form className="ml-20 mr-3 ">
+                <form className="w-[95%] mx-auto lg:w-full ">
                   <h2 className="text-2xl  font-semibold">Payment </h2>
                   <p className="mb-2">
                     All transactions are secure and encrypted.
@@ -192,21 +221,38 @@ const CheckOut = () => {
             </>
           )}
         </div>
-        <div className="  border-y-2 border-r-2 border-gray-300 bg-base-300">
-          <div className="card w-96 mt-[10%] mx-auto bg-base-100 shadow-xl image-full">
-            <figure>
-              <img src={img} alt="Shoes" className="w-full" />
+        <div className="w-[96%] mx-auto md:w-full border-y-2 border-r-2 border-gray-300 rounded-xl bg-base-300 py-8">
+          <div className="card w-[90%]  md:w-96 mx-auto bg-base-100 shadow-xl image-full">
+            <figure className="w-full">
+              <img src={img} alt={name} className="" />
             </figure>
-            <div className="relative z-20 mx-auto space-y-2 text-white top-1/2">
+            <div className="relative z-20 mx-auto space-y-2 text-white top-10  lg:top-1/2">
               <h2 className="text-2xl text-center font-semibold">{name}</h2>
               <p> Cost: BDT.{price}</p>
               <p>Duration : 4 days</p>
             </div>
           </div>
-          <div className=" border-2 border-black  my-10 w-1/2 mx-auto ">
+          <div className=" border-2 border-black w-3/4  my-10 lg:w-1/2 px-2 py-5 mx-auto ">
             <p className="text-xl font-bold  ">
               Total Cost : BDT. {price} for 4 days <br />
             </p>
+          </div>
+          {touristDetails.length > 0 && (
+            <div className="w-[90%] lg:w-1/2 mx-auto font-semibold text-xl border-2 border-dotted border-black p-4 rounded-xl">
+              {touristDetails.map((tDetails) => (
+                <TouristInfo key={tDetails._id} tDetails={tDetails} />
+              ))}
+            </div>
+          )}
+
+          <div className="w-1/2 mx-auto mt-10 ">
+            <Link to="/services">
+              {" "}
+              <button className="btn hover:bg-[#213547] hover:text-white">
+                {" "}
+                Purchase another one
+              </button>
+            </Link>
           </div>
         </div>
       </div>
