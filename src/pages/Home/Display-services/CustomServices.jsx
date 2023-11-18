@@ -8,7 +8,7 @@ const CustomServices = () => {
     fetch(`http://localhost:3000/custom-service`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setServices(data);
       });
   }, []);

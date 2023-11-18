@@ -5,6 +5,7 @@ import "./Review.css";
 import { AuthProvider } from "../../../Context/UserContext";
 import AllReview from "./AllReview";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 const Review = ({ service }) => {
   const { _id, rating, name } = service;
   const [reviews, setReviews] = useState([]);
@@ -48,10 +49,12 @@ const Review = ({ service }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.acknowledged) {
+        // console.log(data);
+        if (data.result.acknowledged) {
           setCount(count + 1);
         }
+        toast(data.message)
+      
         form.reset();
       })
       .catch((e) => console.error(e));
@@ -60,7 +63,7 @@ const Review = ({ service }) => {
     fetch(`http://localhost:3000/review/${_id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setReviews(data);
       });
   }, [count]);

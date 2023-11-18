@@ -2,7 +2,8 @@ import React from 'react';
 
 const TouristInfo = ({tDetails}) => {
     const {address,city,number,name ,state,email} =tDetails 
-    console.log(tDetails)
+    // console.log(tDetails)
+
     return (
         <div>
             <h3>Name :{name}</h3>

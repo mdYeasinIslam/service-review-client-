@@ -17,7 +17,7 @@ const MyReviews = () => {
           (userReview) => userReview.customerEmail == user?.email
         );
         setLoading(false);
-        setReviews(filter);
+        setReviews(filter.reverse());
       });
   }, [reRender]);
   console.log(loading);
@@ -77,48 +77,5 @@ const MyReviews = () => {
     </div>
   );
 };
-{
-  /* <form onSubmit={formHandler} method="dialog">
-                <p className="font-semibold ">
-                  <label htmlFor="title" className="text-white">
-                    Title :
-                  </label>
-                  <input
-                    type="text"
-                    name="reviewTitle"
-                    defaultValue={reviewDetails?.title}
-                    // readOnly={!edit}
-                    id="title"
-                    className={`w-full p-1 rounded-sm bg-base-300  ${
-                      !edit ? "border-2 border-black" : ""
-                    }`}
-                  />
-                </p>
 
-                <p className="font-semibold ">
-                  <label className="text-white"> Review :</label>
-                  <input
-                    type="text"
-                    name="reviewBody"
-                    defaultValue={reviewDetails?.body}
-                    // readOnly={!edit}
-                    className={`w-full p-1 rounded-sm bg-base-300 ${
-                      !edit ? "border-2 border-black" : ""
-                    }`}
-                  />{" "}
-                </p>
-
-                <button
-                  onClick={() => {
-                    // setReRender(!reRender);
-                    setEdit(false);
-                  }}
-                  type={`${!edit ? "submit" : "hidden"}`}
-                  defaultValue="Submit"
-                  className="border-2  border-black text-white rounded-lg font-semibold  p-2 mt-3 "
-                >
-                  Submit
-                </button>
-              </form> */
-}
 export default MyReviews;

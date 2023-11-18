@@ -9,7 +9,7 @@ const Service = ({ service }) => {
   // console.log(service)
    
   return (
-    <div className="card serviceCard h-[30rem] w-full  shadow-xl mx-auto ">
+    <div className="card serviceCard md:h-[28rem] w-full  shadow-xl mx-auto ">
       <PhotoProvider>
         <PhotoView src={img}>
           <img

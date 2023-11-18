@@ -20,7 +20,7 @@ const Services = () => {
     <div className="pb-10  bg-[#ffece7] ">
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage `}>
         <div
-          className={`absolute font-[cursive]  top-28 w-full ${
+          className={`absolute font-[cursive] top-28 w-full ${
             navControl ? "transition-style1  " : "transition-style2 "
           } font-semibold text-center text-white`}
         >

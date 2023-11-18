@@ -11,7 +11,7 @@ const CheckOut = () => {
   const [touristDetails, setTouristDetails] = useState([]);
   const [paymentDiv, setPaymentDiv] = useState(false);
   const [infoSubmitted, setInfoSubmitted] = useState(false);
-  const { name, price, rating, img, details, _id } = servicedata;
+  const { name, price, img, _id } = servicedata;
   // console.log(servicedata)
   const formHandler = (e) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ const CheckOut = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.status) {
           toast(data.message);
           setInfoSubmitted(data.status);
@@ -57,11 +57,22 @@ const CheckOut = () => {
       .then((res) => res.json())
       .then((data) => {
         const filter = data.filter((d) => d.placeId == _id);
-        console.log(filter);
+        // console.log(filter);
         setTouristDetails(filter);
       });
   }, [infoSubmitted]);
-  console.log(infoSubmitted);
+  // console.log(infoSubmitted);
+  const deleteInfo = (id) => {
+    fetch(`http://localhost:3000/tourist-Info/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setInfoSubmitted(!infoSubmitted)
+        toast(data.message)
+      });
+  };
   return (
     <div>
       <figure className="w-full bg-[#213547] md:text-center">
@@ -242,10 +253,20 @@ const CheckOut = () => {
               {touristDetails.map((tDetails) => (
                 <TouristInfo key={tDetails._id} tDetails={tDetails} />
               ))}
+
+              <div
+                onClick={() => deleteInfo(_id)}
+                className="w-1/2 mx-auto mt-10 "
+              >
+                <button className="btn hover:bg-[#213547] hover:text-white">
+                  {" "}
+                  Delete Your Info
+                </button>
+              </div>
             </div>
           )}
 
-          <div className="w-1/2 mx-auto mt-10 ">
+          <div className="w-1/2 mx-auto my-10 text-center ">
             <Link to="/services">
               {" "}
               <button className="btn hover:bg-[#213547] hover:text-white">
