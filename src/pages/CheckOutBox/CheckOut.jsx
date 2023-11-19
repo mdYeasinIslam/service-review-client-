@@ -268,9 +268,7 @@ const CheckOut = () => {
 
           <div className="w-1/2 mx-auto my-10 text-center ">
             <Link to="/services">
-              {" "}
               <button className="btn hover:bg-[#213547] hover:text-white">
-                {" "}
                 Purchase another one
               </button>
             </Link>

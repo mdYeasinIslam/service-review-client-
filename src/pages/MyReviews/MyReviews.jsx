@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Context/UserContext";
 import ShowReviews from "./ShowReviews";
 
@@ -20,7 +19,7 @@ const MyReviews = () => {
         setReviews(filter.reverse());
       });
   }, [reRender]);
-  console.log(loading);
+  // console.log(loading);
   return (
     <div>
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage`}>

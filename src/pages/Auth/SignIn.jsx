@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import {
   Link,
-  useLoaderData,
   useLocation,
   useNavigate,
 } from "react-router-dom";
@@ -55,14 +54,14 @@ const SignIn = () => {
         <div className={`absolute font-[cursive]  top-28 w-full ${navControl?'transition-style1  ':'transition-style2 z-[1]'} font-semibold text-center text-white`}>
           <span className="text-4xl md:text-6xl block font-bold mb-3">Account</span>
           <span className="text-xl md:text-2xl ">
-            Please Log-In or Create an Account
+            Please Log-In your Account
           </span>
          
         </div>
       </div>
       <div className="hero pt-10 bg-base-200 pb-12">
  
-          <div className="card flex-shrink-0 w-[80%] md:w-[70%] lg:w-[50%]  shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 w-full md:w-[70%] lg:w-[50%]  shadow-2xl bg-base-100">
             <h3 className="text-2xl text-center font-bold mt-4">Log-In Now</h3>
             <form onSubmit={formHandler} className="card-body">
               <div className="form-control">

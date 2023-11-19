@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Service.css";
-import { AuthProvider } from "../../Context/UserContext";
 import Service from "./Service";
+import { AuthProvider } from "../../Context/UserContext";
 const Services = () => {
   const { navControl } = useContext(AuthProvider);
   // console.log(navControl)
-  const { user } = useContext(AuthProvider);
   const [services, setServices] = useState([]);
 
   useEffect(() => {

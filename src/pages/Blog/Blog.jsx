@@ -1,10 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AuthProvider } from "../../Context/UserContext";
 import "./Blog.css";
-import ImageUpload from "../SharedPage/ImageUpload/ImageUpload";
 const Blog = () => {
   const { navControl } = useContext(AuthProvider);
-  const [open, setOpen] = useState(false);
   return (
     <div>
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage mb-10`}>

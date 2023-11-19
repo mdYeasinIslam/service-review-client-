@@ -30,7 +30,7 @@ const ImageUpload = () => {
             key: "708ba90fcdb534bfd76013da1ac46b05", // Replace with your ImgBB API key
           },
         }
-      );
+      ); 
 
       console.log("File uploaded successfully:", response.data);
 
@@ -44,10 +44,10 @@ const ImageUpload = () => {
   // console.log(imgUrl);
 
   return (
-    <div>
-      <input onBlur={handleUpload} type="file" onChange={handleFileChange} />
-      {/* <button>Upload</button> */}
-    </div>
+   
+      <input onBlur={handleUpload} type="file" onChange={handleFileChange} className="inline w-1/2"/>
+
+   
   );
 };
 

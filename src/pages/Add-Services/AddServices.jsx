@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AuthProvider } from "../../Context/UserContext";
-import { Link } from "react-router-dom";
 import img from "../../assets/image/custom-service/travel-world.jpg";
 import { toast } from "react-toastify";
+import ImageUpload from "../SharedPage/ImageUpload/ImageUpload";
+
 const AddServices = () => {
-  const { navControl } = useContext(AuthProvider);
+  const { navControl, imgUrl } = useContext(AuthProvider);
   const formHandler = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,8 +13,13 @@ const AddServices = () => {
     const serviceImg = form.serviceImg.value;
     const servicePrice = form.price.value;
     const details = form.details.value;
-    const serviceInfo = { serviceName, serviceImg, servicePrice, details };
-    // console.log(serviceInfo)
+    const serviceInfo = {
+      serviceName,
+      serviceImg: imgUrl,
+      servicePrice,
+      details,
+    };
+    console.log(serviceInfo)
     fetch(`http://localhost:3000/custom-service`, {
       method: "POST",
       headers: {
@@ -24,7 +30,7 @@ const AddServices = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
-        toast('Service is added successfully')
+        toast("Service is added successfully");
         form.reset();
       });
   };
@@ -66,14 +72,15 @@ const AddServices = () => {
             </div>
             <div className="form-control">
               <label>Service-Image (Optional) : </label>
-
               <input
                 type="text"
                 name="serviceImg"
-                placeholder="serviceImg URL (optional)"
+                placeholder={imgUrl}
                 className="input input-bordered"
               />
+              <ImageUpload />
             </div>
+
             <div className="form-control">
               <label>Service-Price : </label>
 

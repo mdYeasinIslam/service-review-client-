@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Banner from "./Banner/Banner";
 import Service from "../Services/Service";
 import { Link } from "react-router-dom";
-import img from '../../assets/image/TouristArea/sundarban.jpg'
 import CustomServices from "./Display-services/CustomServices";
  import './Home.css'
 import AdditionalPacks from "./ExtraPackage/AdditionalPacks";
@@ -21,9 +20,9 @@ const Home = () => {
       <Banner />
       {/* Tourist Services */}
       <div className="md:py-20 service-section bg-base-300">
-        <div className="w-full text-center font-bold font-[cursive] py-28 ">
+        <div className="w-full text-center font-bold font-[cursive] pt-16 md:py-28 ">
           <h3 className="text-4xl md:text-5xl">Enjoy Holiday Tours</h3>
-          <p className="">Pick The One Your Prefer</p>
+          <p className="mt-6">Pick The One Your Prefer</p>
         </div>
         <div>
           <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-[96%] mx-auto mt-10">
@@ -36,7 +35,7 @@ const Home = () => {
         <Link to='/services'>
         
           <button className="btn btn-success  bg-[#49749a] text-white hover:bg-[#213547] hover:text-white">
-            See more..-
+            See more...
           </button>
         </Link>
       </div>

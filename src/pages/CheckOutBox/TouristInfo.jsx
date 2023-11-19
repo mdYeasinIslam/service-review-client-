@@ -3,7 +3,6 @@ import React from 'react';
 const TouristInfo = ({tDetails}) => {
     const {address,city,number,name ,state,email} =tDetails 
     // console.log(tDetails)
-
     return (
         <div>
             <h3>Name :{name}</h3>
@@ -12,7 +11,6 @@ const TouristInfo = ({tDetails}) => {
             <p>Address : {address}</p>
             <p>Contact : {JSON.parse(number)}</p>
             <p>Email : {email}</p>
-
         </div>
     );
 };

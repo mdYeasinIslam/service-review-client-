@@ -6,16 +6,11 @@ import { toast } from "react-toastify";
 const ShowReviews = ({
   rev,
   setReRender,
-  reRender,
-  getUpdateInfo,
-  setOpenModal,
-  openModal,
+  reRender
 }) => {
   const [edit, setEdit] = useState(false);
   const {
     _id,
-    customerEmail,
-    customerName,
     placeName,
     reviewBody,
     reviewTitle,

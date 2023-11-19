@@ -1,13 +1,11 @@
 import React from "react";
 import "./Service.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
   const { _id, name, img, price, details,gridColumn } = service;
   // console.log(service)
-   
   return (
     <div className={`card serviceCard md:h-[28rem] w-full  shadow-xl mx-auto col-span-${gridColumn}`}>
       <PhotoProvider>

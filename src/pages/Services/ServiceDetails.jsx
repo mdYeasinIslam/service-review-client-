@@ -60,9 +60,9 @@ const ServiceDetails = () => {
           </div>
           <div className="my-6 space-y-3">
             <h1 className="font-bold text-3xl">Age</h1>
-            <button className="border-2 border-base-300 ">Only 18+ </button>
+            <button className="border-2 border-base-300 ">Only 17+ </button>
             <br />
-            <span htmlFor="age">Are you 18+ :- </span>
+            <span htmlFor="age">Are you 17+ :- </span>
             <br />
             <input
               onClick={() => setAdult(!adult)}
@@ -74,20 +74,6 @@ const ServiceDetails = () => {
             <label htmlFor="yes" className="age">
               Yes
             </label>
-            {/* <input
-              onClick={() => setAdult(false)}
-              type="checkbox"
-              name=""
-              id="no"
-              className="age"
-            />
-            <label htmlFor="no" className="age">
-              No
-            </label> */}
-            {
-              !adult &&  <p className="text-red-500 font-semibold">please select your age range </p>
-            }
-           
           </div>
           <div>
             <h1 className="text-3xl font-bold">Abailability</h1>
@@ -101,26 +87,28 @@ const ServiceDetails = () => {
             <p className="text-xl bg-base-300 ">BDT.{price}</p>
           </div>
           <div className=" mt-3">
-            {
-              adult?
-                <Link to={`/services/check-out/${_id}`}>
-              <button
-                className={`w-full hover:bg-[#213547] hover:text-white hover:transition-all`}
-              >
-                Confirm Your Adverture
-              </button>
-            </Link>
-              :
-             
+            {!adult && (
+              <p className="text-red-500 font-semibold">
+                please select your age range{" "}
+              </p>
+            )}
+            {adult ? (
+              <Link to={`/services/check-out/${_id}`}>
+                <button
+                  className={`w-full hover:bg-[#213547] hover:text-white hover:transition-all`}
+                >
+                  Confirm Your Adverture
+                </button>
+              </Link>
+            ) : (
               <button
                 className={`w-full hover:bg-[#213547] hover:text-white hover:transition-all btn-disabled`}
               >
                 Confirm Your Adverture
               </button>
-           
-            }
-           
+            )}
           </div>
+          
         </div>
       </div>
       {/* ----------------------------------------- */}
