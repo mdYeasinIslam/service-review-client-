@@ -90,14 +90,7 @@ const Root = () => {
          
         },
 
-        {
-          path: "/signIn",
-          element: <SignIn />,
-        },
-        {
-          path: "/signUp",
-          element: <SignUp />,
-        },
+     
       ],
     },
     {
@@ -119,7 +112,16 @@ const Root = () => {
     {
       path: "/",
       element: <Third />,
-      children: [],
+      children: [
+        {
+          path: "/signIn",
+          element: <SignIn />,
+        },
+        {
+          path: "/signUp",
+          element: <SignUp />,
+        },
+      ],
     },
   ]);
   return (

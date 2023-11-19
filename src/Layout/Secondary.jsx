@@ -8,7 +8,7 @@ const Secondary = () => {
         <div>
           {/* <div className='bg-[#213547] w-full text-white'>
           <Navbar/>
-          </div> */}
+          </div> */} 
             <Outlet/>
        
         </div>

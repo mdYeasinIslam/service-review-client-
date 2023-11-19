@@ -5,11 +5,11 @@ import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
-  const { _id, name, img, price, details } = service;
+  const { _id, name, img, price, details,gridColumn } = service;
   // console.log(service)
    
   return (
-    <div className="card serviceCard md:h-[28rem] w-full  shadow-xl mx-auto ">
+    <div className={`card serviceCard md:h-[28rem] w-full  shadow-xl mx-auto col-span-${gridColumn}`}>
       <PhotoProvider>
         <PhotoView src={img}>
           <img
@@ -28,7 +28,7 @@ const Service = ({ service }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Service;

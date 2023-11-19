@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthProvider } from "../../Context/UserContext";
 import "./Blog.css";
+import ImageUpload from "../SharedPage/ImageUpload/ImageUpload";
 const Blog = () => {
   const { navControl } = useContext(AuthProvider);
   const [open, setOpen] = useState(false);

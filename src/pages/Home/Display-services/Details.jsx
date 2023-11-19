@@ -7,7 +7,7 @@ import { RxStarFilled } from "react-icons/rx";
 const Details = () => {
     const serviceDetails = useLoaderData()
     const {navControl} = useContext(AuthProvider)
-    console.log(serviceDetails)
+    // console.log(serviceDetails)
     const {details,serviceName,servicePrice,serviceImg} = serviceDetails
     return (
         <div className="pb-10 bg-base-300">

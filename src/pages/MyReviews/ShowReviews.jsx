@@ -51,7 +51,7 @@ const ShowReviews = ({
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         const status = data.status;
         if (status) {
           setReRender(!reRender);

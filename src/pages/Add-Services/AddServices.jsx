@@ -23,7 +23,7 @@ const AddServices = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         toast('Service is added successfully')
         form.reset();
       });

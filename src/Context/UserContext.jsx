@@ -1,5 +1,5 @@
 import React, {createContext, useEffect, useState } from "react";
-import{GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth'
+import{GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateCurrentUser, updateProfile} from 'firebase/auth'
 import app from "../firebase/firebase.init";
 
 
@@ -11,6 +11,7 @@ const UserContext = ({ children }) => {
   const [user, setUser] = useState({});
   const [loading ,setLoading] = useState(false)
   const [navControl,setNavControl] = useState(false)
+  const [imgUrl,setImgUrl] = useState(null)
 //sign-Up
 const signUp = (email,password)=>{
     setLoading(false)
@@ -31,19 +32,24 @@ const signOutAuth = () =>{
 const google = () => {
     return signInWithPopup(auth,googleProvider)
 }
+
 useEffect(()=>{
     const subscribe = onAuthStateChanged(auth,currentUser =>{
-        console.log(currentUser)
+        // console.log(currentUser)
         setUser(currentUser)
         setLoading(true)
     })
     return () => subscribe()
 },[])
+
 const navHandler =(control) =>{
     setNavControl(control)
 }
-// console.log(navControl)
-  const userInfo = { user,loading ,signIn,signUp,signOutAuth,google,navHandler,navControl};
+const updateUser = (profile)=>{
+    return updateProfile(auth.currentUser,profile)
+}
+// console.log(user)
+  const userInfo = { user,loading ,signIn,signUp,signOutAuth,google,navHandler,updateUser,navControl , setImgUrl,imgUrl};
   return (
     <AuthProvider.Provider value={userInfo}>
         {children}
