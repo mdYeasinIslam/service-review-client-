@@ -19,7 +19,7 @@ const AddServices = () => {
       servicePrice,
       details,
     };
-    console.log(serviceInfo)
+    console.log(serviceInfo);
     fetch(`http://localhost:3000/custom-service`, {
       method: "POST",
       headers: {

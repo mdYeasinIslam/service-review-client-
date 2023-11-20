@@ -56,15 +56,15 @@
 }
 .serviceCard:hover .details {
   opacity: 1;
-  transform: translateY(-30px);
+  transform: translateY(-28px);
   transition: 1s;
 }
 .serviceCard:hover .body-card > h2 {
-  transform: translateY(-40px);
+  transform: translateY(-38px);
   transition: 1s;
 }
 .serviceCard:hover .body-card > h4 {
-  transform: translateY(-40px);
+  transform: translateY(-38px);
   transition: 1s;
   
 }

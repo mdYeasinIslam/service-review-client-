@@ -53,8 +53,8 @@ const Review = ({ service }) => {
         if (data.result.acknowledged) {
           setCount(count + 1);
         }
-        toast(data.message)
-      
+        toast(data.message);
+
         form.reset();
       })
       .catch((e) => console.error(e));
@@ -70,7 +70,6 @@ const Review = ({ service }) => {
   // console.log(reviews);
   return (
     <div className="font-[cursive]">
-      
       <div className="w-[93%] mx-auto">
         <div className="space-y-2">
           <h3 className="text-2xl font-bold">Customer Review </h3>

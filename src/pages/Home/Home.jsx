@@ -3,7 +3,7 @@ import Banner from "./Banner/Banner";
 import Service from "../Services/Service";
 import { Link } from "react-router-dom";
 import CustomServices from "./Display-services/CustomServices";
- import './Home.css'
+import "./Home.css";
 import AdditionalPacks from "./ExtraPackage/AdditionalPacks";
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -31,25 +31,24 @@ const Home = () => {
             ))}
           </div>
         </div>
-      <div className="text-center py-10 transition-style2">
-        <Link to='/services'>
-        
-          <button className="btn btn-success  bg-[#49749a] text-white hover:bg-[#213547] hover:text-white">
-            See more...
-          </button>
-        </Link>
-      </div>
+        <div className="text-center py-10 transition-style2">
+          <Link to="/services">
+            <button className="btn btn-success  bg-[#49749a] text-white hover:bg-[#213547] hover:text-white">
+              See more...
+            </button>
+          </Link>
+        </div>
       </div>
       {/* Customize Services */}
       <div className="w-full bg-base-300 ">
-        <CustomServices/>
+        <CustomServices />
       </div>
-  {/* Additional packages */}
-  <div className="md:w-[95%] mx-auto rounded-2xl my-20">
-    <AdditionalPacks/>
-  </div>
+      {/* Additional packages */}
+      <div className="md:w-[95%] mx-auto rounded-2xl my-20">
+        <AdditionalPacks />
+      </div>
     </div>
   );
-}; 
+};
 
 export default Home;

@@ -3,20 +3,9 @@ import { CiEdit } from "react-icons/ci";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { toast } from "react-toastify";
 
-const ShowReviews = ({
-  rev,
-  setReRender,
-  reRender
-}) => {
+const ShowReviews = ({ rev, setReRender, reRender }) => {
   const [edit, setEdit] = useState(false);
-  const {
-    _id,
-    placeName,
-    reviewBody,
-    reviewTitle,
-    date,
-    time,
-  } = rev;
+  const { _id, placeName, reviewBody, reviewTitle, date, time } = rev;
   const formHandler = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -62,7 +51,10 @@ const ShowReviews = ({
       <tr className="bg-base-200">
         {/* <th className="md:w-4">1</th> */}
         <td className=" md:w-1/5 font-bold">
-          {placeName} <br /> <span>{date} ({time})</span>
+          {placeName} <br />{" "}
+          <span>
+            {date} ({time})
+          </span>
         </td>
         <td className="w-full">
           <form onSubmit={formHandler}>

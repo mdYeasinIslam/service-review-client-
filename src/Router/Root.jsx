@@ -87,10 +87,7 @@ const Root = () => {
               <ShoppingCart />
             </PrivateRoot>
           ),
-         
         },
-
-     
       ],
     },
     {
@@ -105,7 +102,7 @@ const Root = () => {
             </PrivateRoot>
           ),
           loader: ({ params }) =>
-          fetch(`http://localhost:3000/services/${params.id}`),
+            fetch(`http://localhost:3000/services/${params.id}`),
         },
       ],
     },

@@ -69,8 +69,8 @@ const CheckOut = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
-        setInfoSubmitted(!infoSubmitted)
-        toast(data.message)
+        setInfoSubmitted(!infoSubmitted);
+        toast(data.message);
       });
   };
   return (
