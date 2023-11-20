@@ -8,7 +8,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/services")
+    fetch("https://service-review-server-pink.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -31,7 +31,7 @@ const Services = () => {
         <div>
           <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-[96%] mx-auto mt-10">
             {services.map((service) => (
-              <Service key={service._id} service={service}/>
+              <Service key={service._id} service={service} />
             ))}
           </div>
         </div>

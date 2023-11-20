@@ -35,7 +35,9 @@ const Root = () => {
           path: "/home/:id",
           element: <Details />,
           loader: ({ params }) =>
-            fetch(`http://localhost:3000/custom-service/${params.id}`),
+            fetch(
+              `https://service-review-server-pink.vercel.app/custom-service/${params.id}`
+            ),
         },
         {
           path: "/services",
@@ -45,7 +47,9 @@ const Root = () => {
           path: "/services/:id",
           element: <ServiceDetails />,
           loader: ({ params }) =>
-            fetch(`http://localhost:3000/services/${params.id}`),
+            fetch(
+              `https://service-review-server-pink.vercel.app/services/${params.id}`
+            ),
         },
         {
           path: "/blog",
@@ -102,7 +106,9 @@ const Root = () => {
             </PrivateRoot>
           ),
           loader: ({ params }) =>
-            fetch(`http://localhost:3000/services/${params.id}`),
+            fetch(
+              `https://service-review-server-pink.vercel.app/services/${params.id}`
+            ),
         },
       ],
     },

@@ -8,7 +8,7 @@ const MyReviews = () => {
   const [reRender, setReRender] = useState(true);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:3000/review`)
+    fetch(`https://service-review-server-pink.vercel.app/review`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

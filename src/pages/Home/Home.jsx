@@ -8,7 +8,7 @@ import AdditionalPacks from "./ExtraPackage/AdditionalPacks";
 const Home = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/services?name=hasan")
+    fetch("https://service-review-server-pink.vercel.app/services?name=hasan")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

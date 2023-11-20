@@ -5,7 +5,7 @@ const CustomServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/custom-service`)
+    fetch(`https://service-review-server-pink.vercel.app/custom-service`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

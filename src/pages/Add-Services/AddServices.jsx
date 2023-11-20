@@ -20,7 +20,7 @@ const AddServices = () => {
       details,
     };
     console.log(serviceInfo);
-    fetch(`http://localhost:3000/custom-service`, {
+    fetch(`https://service-review-server-pink.vercel.app/custom-service`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -32,7 +32,7 @@ const CheckOut = () => {
       number,
     };
     // console.log(touristInfo);
-    fetch(`http://localhost:3000/tourist-Info`, {
+    fetch(`https://service-review-server-pink.vercel.app/tourist-Info`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -53,7 +53,7 @@ const CheckOut = () => {
       });
   };
   useEffect(() => {
-    fetch("http://localhost:3000/tourist-Info")
+    fetch("https://service-review-server-pink.vercel.app/tourist-Info")
       .then((res) => res.json())
       .then((data) => {
         const filter = data.filter((d) => d.placeId == _id);
@@ -63,7 +63,7 @@ const CheckOut = () => {
   }, [infoSubmitted]);
   // console.log(infoSubmitted);
   const deleteInfo = (id) => {
-    fetch(`http://localhost:3000/tourist-Info/${id}`, {
+    fetch(`https://service-review-server-pink.vercel.app/tourist-Info/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 const Service = ({ service }) => {
   const { _id, name, img, price, details, gridColumn } = service;
   console.log(typeof service.gridColumn);
-  const column = JSON.stringify(gridColumn);
+  
   return (
     <div
-      className={`card serviceCard md:h-[28rem] w-full col-span-${gridColumn}  shadow-xl mx-auto    `}
+      className={`card serviceCard h-[20rem] md:h-[28rem] w-full ${gridColumn/2  ==1? 'md:col-span-2':'col-span-1 '} shadow-xl mx-auto transition-transform transform  hover:scale-105 duration-500 ease-in-out   `}
     >
       <PhotoProvider>
         <PhotoView src={img}>

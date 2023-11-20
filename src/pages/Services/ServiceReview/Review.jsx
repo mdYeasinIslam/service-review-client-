@@ -40,7 +40,7 @@ const Review = ({ service }) => {
       time,
     };
     // console.log(review);
-    fetch(`http://localhost:3000/review`, {
+    fetch(`https://service-review-server-pink.vercel.app/review`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -60,7 +60,7 @@ const Review = ({ service }) => {
       .catch((e) => console.error(e));
   };
   useEffect(() => {
-    fetch(`http://localhost:3000/review/${_id}`)
+    fetch(`https://service-review-server-pink.vercel.app/review/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

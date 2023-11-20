@@ -12,7 +12,7 @@ const ShowReviews = ({ rev, setReRender, reRender }) => {
     const title = form.reviewTitle.value;
     const body = form.reviewBody.value;
     const review = { title, body };
-    fetch(`http://localhost:3000/review/${_id}`, {
+    fetch(`https://service-review-server-pink.vercel.app/review/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -30,7 +30,7 @@ const ShowReviews = ({ rev, setReRender, reRender }) => {
       });
   };
   const deleteOperation = () => {
-    fetch(`http://localhost:3000/review/${_id}`, {
+    fetch(`https://service-review-server-pink.vercel.app/review/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
