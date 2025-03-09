@@ -3,10 +3,12 @@ import { AuthProvider } from "../../Context/UserContext";
 import img from "../../assets/image/custom-service/travel-world.jpg";
 import { toast } from "react-toastify";
 import ImageUpload from "../SharedPage/ImageUpload/ImageUpload";
+import { useAxiosPublic } from "../../hooks/useAxiosPublic";
 
 const AddServices = () => {
   const { navControl, imgUrl } = useContext(AuthProvider);
-  const formHandler = (e) => {
+  const axiosPublic =useAxiosPublic()
+  const formHandler = async(e) => {
     e.preventDefault();
     const form = e.target;
     const serviceName = form.serviceName.value;
@@ -19,21 +21,28 @@ const AddServices = () => {
       servicePrice,
       details,
     };
-    console.log(serviceInfo);
-    fetch(`https://service-review-server-pink.vercel.app/custom-service`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(serviceInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        toast("Service is added successfully");
-        form.reset();
-      });
+    const res = await axiosPublic.post('/custom-service', { serviceInfo })
+    console.log(res)
+    if (res.data?.acknowledged) {
+      toast("Service is added successfully");
+      form.reset();
+    }
+      
+    // fetch(`https://service-review-server-pink.vercel.app/custom-service`, {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(serviceInfo),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     // console.log(data);
+    //     toast("Service is added successfully");
+    //     form.reset();
+    //   });
   };
+  
   return (
     <div className="font-[cursive]">
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage mb-6 `}>

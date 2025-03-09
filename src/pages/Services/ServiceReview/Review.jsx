@@ -6,12 +6,14 @@ import { AuthProvider } from "../../../Context/UserContext";
 import AllReview from "./AllReview";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
 const Review = ({ service }) => {
   const { _id, rating, name } = service;
   const [reviews, setReviews] = useState([]);
   const [count, setCount] = useState(0);
   const { user, photoURL } = useContext(AuthProvider);
   const [review, setReview] = useState(false);
+  const axiosPublic =useAxiosPublic()
 
   const formHandler = (e) => {
     e.preventDefault();
@@ -60,14 +62,20 @@ const Review = ({ service }) => {
       .catch((e) => console.error(e));
   };
   useEffect(() => {
-    fetch(`https://service-review-server-pink.vercel.app/review/${_id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setReviews(data);
-      });
+    // fetch(`https://service-review-server-pink.vercel.app/review/${_id}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     // console.log(data);
+    //     setReviews(data);
+    //   });
+    fetchData()
   }, [count]);
-  // console.log(reviews);
+  const fetchData = async () => {
+    const res =await axiosPublic.get(`/review/${_id}`)
+    if (res.data) {
+      setReviews(res?.data)
+    }
+  }
   return (
     <div className="font-[cursive]">
       <div className="w-[93%] mx-auto">

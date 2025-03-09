@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 const Service = ({ service }) => {
   const { _id, name, img, price, details, gridColumn } = service;
   console.log(typeof service.gridColumn);
-  
+  // ${gridColumn/2  ==1? 'md:col-span-2':'col-span-1 '}
   return (
     <div
-      className={`card serviceCard h-[20rem] md:h-[28rem] w-full ${gridColumn/2  ==1? 'md:col-span-2':'col-span-1 '} shadow-xl mx-auto transition-transform transform  hover:scale-105 duration-500 ease-in-out   `}
+      className={`card serviceCard h-[20rem] md:h-full w-full  shadow-xl mx-auto transition-transform transform  hover:scale-95 duration-500 ease-in-out`}
     >
       <PhotoProvider>
         <PhotoView src={img}>
           <img
             src={img}
             alt={name}
-            className="  w-full h-full absolute brightness-90   rounded-3xl "
+            className="  w-full h-full absolute brightness-50   rounded-xl "
           />
         </PhotoView>
       </PhotoProvider>
@@ -26,9 +26,9 @@ const Service = ({ service }) => {
           <span className="text-xl">4</span> Day's By BDT.{price}{" "}
         </h4>
         <p className="details ">{details.slice(0, 80)}.....</p>
-        <div className="z-10 w-full">
+        <div className="z-10 w-full ">
           <Link to={`/services/${_id}`}>
-            <button className="btn w-full ">Get Now</button>
+            <button className="btn w-full bg-[#333333] text-white ">Details</button>
           </Link>
         </div>
       </div>

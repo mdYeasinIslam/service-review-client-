@@ -1,25 +1,37 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { AuthProvider } from "../../Context/UserContext";
 import ShowReviews from "./ShowReviews";
+import { useAxiosPublic } from "../../hooks/useAxiosPublic";
 
 const MyReviews = () => {
   const { navControl, user } = useContext(AuthProvider);
   const [reviews, setReviews] = useState([]);
   const [reRender, setReRender] = useState(true);
   const [loading, setLoading] = useState(true);
+  const axiosPublic =useAxiosPublic()
   useEffect(() => {
-    fetch(`https://service-review-server-pink.vercel.app/review`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        const filter = data.filter(
-          (userReview) => userReview.customerEmail == user?.email
+    // fetch(`https://service-review-server-pink.vercel.app/review`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     // console.log(data);
+    //     const filter = data.filter(
+    //       (userReview) => userReview.customerEmail == user?.email
+    //     );
+    //     setLoading(false);
+    //     setReviews(filter.reverse());
+    //   });
+    fetchData()
+  }, [reRender]);
+  const fetchData = async () => {
+    const res = await axiosPublic.get('/review')
+    if (res.data) {
+      const filter = res?.data?.filter(
+          (userReview) => userReview?.customerEmail == user?.email
         );
         setLoading(false);
         setReviews(filter.reverse());
-      });
-  }, [reRender]);
-  // console.log(loading);
+    }
+  }
   return (
     <div>
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage`}>
@@ -31,7 +43,7 @@ const MyReviews = () => {
           <span className="text-2xl md:text-5xl block mb-2 font-[800]">
             All of my Reviews
           </span>
-          <span className="text-xl md:text-2xl ">Let's check all review</span>
+          <span className="text-xl md:text-2xl ">Lets check all review</span>
         </div>
       </div>
       <div className="overflow-x-auto bg-base-300 py-10  ">

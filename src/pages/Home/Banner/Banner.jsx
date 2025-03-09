@@ -27,7 +27,7 @@ const Banner = () => {
         },
     ]
   return (
-    <div className="carousel w-full banner-shadow  
+    <div className="carousel w-full  
      ">
      {
         sliderImg.map(slider => <BannerItem key={slider.id} slider ={slider} />)

@@ -1,4 +1,3 @@
-import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home";
@@ -10,13 +9,12 @@ import Third from "../Layout/Third";
 import Blog from "../pages/Blog/Blog";
 import PrivateRoot from "./PrivateRoot";
 import ServiceDetails from "../pages/Services/ServiceDetails";
-import Myreviews from "../pages/MyReviews/Myreviews";
-import MyReviews from "../pages/MyReviews/Myreviews";
 import AddServices from "../pages/Add-Services/AddServices";
 import Details from "../pages/Home/Display-services/Details";
 import Profile from "../pages/Profile/Profile";
 import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import CheckOut from "../pages/CheckOutBox/CheckOut";
+import MyReviews from "../pages/MyReviews/MyReviews";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -64,7 +62,7 @@ const Root = () => {
           path: "/my-reviews",
           element: (
             <PrivateRoot>
-              <MyReviews />
+              <MyReviews/>
             </PrivateRoot>
           ),
         },

@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex flex-row-reverse lg:flex-row justify-between lg:justify-start items-center ">
+    <div className="container mx-auto flex flex-row-reverse lg:flex-row justify-between lg:justify-start items-center ">
       <div className=" menu-item">
         <div
           onClick={multipleFuncActive}
@@ -99,7 +99,7 @@ const Navbar = () => {
         <img src={logo} className="w-28 md:w-32 md:h-24 " />
       </div>
       <div className="navbar-center  hidden lg:flex  mx-auto">
-        <ul className="menu menu-horizontal font-semibold text-lg px-1 gap-4 menu-icon">
+        <ul className="menu menu-horizontal font-semibold text-lg px-1  menu-icon">
           <NavLink to="/home ">
             <li>Home</li>
           </NavLink>

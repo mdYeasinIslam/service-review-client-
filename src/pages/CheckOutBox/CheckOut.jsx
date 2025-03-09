@@ -4,6 +4,7 @@ import { useLoaderData, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import TouristInfo from "./TouristInfo";
 import { AuthProvider } from "../../Context/UserContext";
+import { useAxiosPublic } from "../../hooks/useAxiosPublic";
 
 const CheckOut = () => {
   const servicedata = useLoaderData();
@@ -12,6 +13,7 @@ const CheckOut = () => {
   const [paymentDiv, setPaymentDiv] = useState(false);
   const [infoSubmitted, setInfoSubmitted] = useState(false);
   const { name, price, img, _id } = servicedata;
+  const axiosPublic =useAxiosPublic()
   // console.log(servicedata)
   const formHandler = (e) => {
     e.preventDefault();
@@ -53,14 +55,22 @@ const CheckOut = () => {
       });
   };
   useEffect(() => {
-    fetch("https://service-review-server-pink.vercel.app/tourist-Info")
-      .then((res) => res.json())
-      .then((data) => {
-        const filter = data.filter((d) => d.placeId == _id);
-        // console.log(filter);
-        setTouristDetails(filter);
-      });
+    // fetch("https://service-review-server-pink.vercel.app/tourist-Info")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     const filter = data.filter((d) => d.placeId == _id);
+    //     // console.log(filter);
+    //     setTouristDetails(filter);
+    //   });
+    fetchData()
   }, [infoSubmitted]);
+   const fetchData = async() => {
+    const res = await axiosPublic.get('/tourist-Info')
+    console.log(res.data)
+    if (res.data) {
+      setServices(res.data)
+    }
+  }
   // console.log(infoSubmitted);
   const deleteInfo = (id) => {
     fetch(`https://service-review-server-pink.vercel.app/tourist-Info/${id}`, {
