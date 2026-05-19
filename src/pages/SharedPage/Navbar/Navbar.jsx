@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
-import logo from "/src/assets/logo7 (1).png";
-import "./Navbar.css";
+import { useContext, useState } from "react";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
-import { RxCross2 } from "react-icons/rx";
-import { PiSignOutBold } from "react-icons/pi";
 import { MdOutlineAccountCircle } from "react-icons/md";
+import { PiSignOutBold } from "react-icons/pi";
+import { RxCross2 } from "react-icons/rx";
+import { NavLink } from "react-router-dom";
+import "./Navbar.css";
+import logo from "/src/assets/logo7 (1).png";
 
-import { AuthProvider } from "../../../Context/UserContext";
 import { toast } from "react-toastify";
+import { AuthProvider } from "../../../Context/UserContext";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const { user, signOutAuth, navHandler, navControl } =
@@ -53,7 +53,7 @@ const Navbar = () => {
               : "menu-hide  w-[80%] md:w-1/2 top-0 left-[-620px]"
           }`}
         >
-          <NavLink to="/home ">
+          <NavLink to="/ ">
             <li>Home</li>
           </NavLink>
           <NavLink to="/services">
@@ -100,7 +100,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-center  hidden lg:flex  mx-auto">
         <ul className="menu menu-horizontal font-semibold text-lg px-1  menu-icon">
-          <NavLink to="/home ">
+          <NavLink to="/">
             <li>Home</li>
           </NavLink>
           <NavLink to="/services">

@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
-import { useLoaderData, Link } from "react-router-dom";
+import { useContext, useState } from "react";
 import { PiStarThin } from "react-icons/pi";
 import { RxStarFilled } from "react-icons/rx";
-import Review from "./ServiceReview/Review";
-import Description from "./Description/Description";
-import { AuthProvider } from "../../Context/UserContext";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { Link, useLoaderData } from "react-router-dom";
+import { AuthProvider } from "../../Context/UserContext";
+import Description from "./Description/Description";
+import Review from "./ServiceReview/Review";
 
 const ServiceDetails = () => {
   const { navControl } = useContext(AuthProvider);
@@ -13,136 +13,144 @@ const ServiceDetails = () => {
   const [selector, setSelector] = useState(false);
   const [adult, setAdult] = useState(false);
   const { _id, img, name, price, rating, details } = service;
+  console.log(service)
   return (
-    <div className="pb-10 bg-base-300">
-      <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage mb-10`}>
-        <div
-          className={`absolute font-[cursive]  top-28 w-full ${
-            navControl ? "transition-style1  " : "transition-style2 z-[1]"
-          } font-semibold text-center text-white`}
-        >
-          <span className="text-2xl md:text-5xl block mb-2 font-[800]">
-            {name}
-          </span>
-          <span className="text-xl md:text-2xl ">Enjoy Our Service</span>
+    <section className="pb-10 bg-base-300">
+      <div className="container mx-auto">
+        {/* Header */}
+        <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage mb-10`}>
+          <div
+            className={`absolute font-[cursive] top-28 w-full ${
+              navControl ? "transition-style1" : "transition-style2 z-[1]"
+            } font-semibold text-center text-white`}
+          >
+            <span className="text-2xl md:text-5xl block mb-2 font-[800]">
+              {name}
+            </span>
+            <span className="text-xl md:text-2xl">Enjoy Our Service</span>
+          </div>
         </div>
-      </div>
-      {/* service details */}
-      <div className="grid md:grid-cols-2 w-[95%] mx-auto ">
-        <PhotoProvider className="w-full">
-          <PhotoView src={img}>
-            <img
-              src={img}
-              alt=""
-              className="w-full md:h-[25rem] lg:h-[30rem] rounded-xl "
-            />
-          </PhotoView>
-        </PhotoProvider>
 
-        <div className="pl-5">
-          <div>
-            <h1 className="font-[800] text-4xl">{name}</h1>
-            <p className="text-2xl mt-5 mb-10">BDT. {price}</p>
-            <p className="flex text-orange-500  space-x-2">
-              {[...Array(5).keys()].map((n) => (
-                <span key={n}>
-                  {rating > n ? <RxStarFilled /> : <PiStarThin />}
-                </span>
-              ))}
-            </p>
-            <p className="my-6">{details}</p>
-          </div>
-          <div className="space-y-3">
-            <h1 className="font-bold text-3xl">Duration</h1>
-            <button className="border-2 border-base-300 bg-gray-800 text-white ">
-              4 Days
-            </button>
-          </div>
-          <div className="my-6 space-y-3">
-            <h1 className="font-bold text-3xl">Age</h1>
-            <button className="border-2 border-base-300 ">Only 17+ </button>
-            <br />
-            <span htmlFor="age">Are you 17+ :- </span>
-            <br />
-            <input
-              onClick={() => setAdult(!adult)}
-              type="checkbox"
-              name=""
-              id="yes"
-              className="age"
-            />
-            <label htmlFor="yes" className="age">
-              Yes
-            </label>
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold">Abailability</h1>
-            <p className="bg-base-300 ">
-              Need {rating} person for a complete group. Only {rating} person
-              can join !!!
-            </p>
-          </div>
-          <div className="my-2">
-            <h1 className="text-2xl font-bold">Sub-Total</h1>
-            <p className="text-xl bg-base-300 ">BDT.{price}</p>
-          </div>
-          <div className=" mt-3">
+        {/* Service Details */}
+        <div className="grid md:grid-cols-2 w-[95%] mx-auto gap-5">
+          {/* Image */}
+          <PhotoProvider>
+            <PhotoView src={img}>
+              <img
+                src={img}
+                alt={name}
+                className="w-full md:h-[25rem] lg:h-[30rem] rounded-xl"
+              />
+            </PhotoView>
+          </PhotoProvider>
+
+          {/* Info */}
+          <div className="pl-5 space-y-6">
+            <div>
+              <h1 className="text-white font-[800] text-4xl">{name}</h1>
+              <p className="text-2xl mt-5">BDT. {price}</p>
+              <div className="flex text-orange-500 space-x-2 mt-3">
+                {[...Array(5)].map((_, n) => (
+                  <span key={n}>
+                    {rating > n ? <RxStarFilled /> : <PiStarThin />}
+                  </span>
+                ))}
+              </div>
+              <p className="my-6 text-gray-300">{details}</p>
+            </div>
+
+            <div>
+              <h2 className="font-bold text-3xl mb-2">Duration</h2>
+              <span className="border-2 border-base-300 bg-gray-800 text-white font-semibold p-2 rounded-md">
+                4 Days
+              </span>
+            </div>
+
+            <div>
+              <h2 className="font-bold text-3xl mb-2">Age Verification</h2>
+              <p className="border-2 border-base-100 pl-2 mb-3">
+                Only 18+ allowed
+              </p>
+              <label className="flex items-center space-x-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  id="age-confirm"
+                  checked={adult}
+                  onChange={() => setAdult(!adult)}
+                  className="w-4 h-4"
+                />
+                <span>I confirm I am 18 or older</span>
+              </label>
+            </div>
+
+            <div>
+              <h2 className="font-bold text-3xl mb-2">Availability</h2>
+              <p className="bg-base-300 p-2">
+                Need {rating} people for a complete group. Only {rating} person
+                can join!
+              </p>
+            </div>
+
+            <div className="border-t pt-4">
+              <p className="text-xl font-bold">
+                Sub-Total:{" "}
+                <span className="bg-base-300 ml-2 px-2">৳{price}</span>
+              </p>
+            </div>
+
             {!adult && (
               <p className="text-red-500 font-semibold">
-                please select your age range{" "}
+                Please confirm your age to proceed
               </p>
             )}
+
             {adult ? (
               <Link to={`/services/check-out/${_id}`}>
-                <button
-                  className={`w-full hover:bg-[#213547] hover:text-white hover:transition-all`}
-                >
-                  Confirm Your Adverture
+                <button className="w-full px-4 py-2 border border-gray-200 hover:bg-[#213547] hover:text-white transition-all">
+                  Confirm Your Adventure
                 </button>
               </Link>
             ) : (
               <button
-                className={`w-full hover:bg-[#213547] hover:text-white hover:transition-all btn-disabled`}
+                disabled
+                className="w-full px-4 py-2 border border-gray-200 opacity-50 cursor-not-allowed"
               >
-                Confirm Your Adverture
+                Confirm Your Adventure
               </button>
             )}
           </div>
-          
         </div>
-      </div>
-      {/* ----------------------------------------- */}
-      {/* review section */}
-      <div className="space-y-2 my-10">
-        <hr className="border-3 border-black " />
-        <div className="flex justify-around text-xl md:text-3xl font-semibold text-center  bg-base-300 my-0 p-0 ">
-          <button
-            onClick={() => setSelector(false)}
-            className={`font-[cursive] ${
-              selector == false && "underline text-blue-400 "
-            }`}
-          >
-            Description
-          </button>
-          <button
-            onClick={() => setSelector(true)}
-            className={`font-[cursive] ${
-              selector == true && "underline text-blue-400 "
-            }`}
-          >
-            Review
-          </button>
+
+        {/* Tabs */}
+        <div className="py-10 md:py-32">
+          <div className="flex gap-4 border-b-3 border-black bg-base-300">
+            {[
+              { label: "Description", value: false },
+              { label: "Review", value: true },
+            ].map((tab) => (
+              <p
+                key={tab.label}
+                onClick={() => setSelector(tab.value)}
+                className={`flex-1 py-3 font-semibold text-xl md:text-3xl transition-colors text-center  cursor-pointer border rounded-md ${
+                  selector === tab.value
+                    ? "text-blue-400 bg-[#12181F]   border-blue-400 "
+                    : "bg-[#12181F] border-gray-500"
+                }`}
+              >
+                {tab.label}
+              </p>
+            ))}
+          </div>
         </div>
-        <hr className="border-3 border-black" />
-      </div>
-      <div>
+
+        {/* Content */}
         {selector ? (
-          <Review key={_id} service={service} />
+          <Review service={service} />
         ) : (
-          <Description key={service._id} service={service} />
+          <Description service={service} />
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

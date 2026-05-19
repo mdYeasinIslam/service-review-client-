@@ -25,10 +25,10 @@ const Root = () => {
           path: "/",
           element: <Home />,
         },
-        {
-          path: "/home",
-          element: <Home />,
-        },
+        // {
+        //   path: "/home",
+        //   element: <Home />,
+        // },
         {
           path: "/home/:id",
           element: <Details />,

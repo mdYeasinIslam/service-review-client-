@@ -27,8 +27,9 @@ const Services = () => {
       setLoading(false);
     }
   };
+  // [#ffece7]
   return (
-    <div className="pb-10  bg-[#ffece7] ">
+    <div className="pb-10  bg-black/50 ">
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage `}>
         <div
           className={`absolute font-[cursive] top-28 w-full ${
