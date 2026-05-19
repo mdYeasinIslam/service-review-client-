@@ -6,7 +6,7 @@ const BannerItem = ({ slider }) => {
   const { id, next, prev, image } = slider;
   return (
     <div id={`slide${id}`} className="carousel-item relative w-full ">
-      <div className="w-full h-[100%] md:h-[40rem]">
+      <div className="w-full h-[100%] lg:h-[40rem]">
         <img
           src={image}
           className={`w-full h-full object-cover object-center  brightness-50`}

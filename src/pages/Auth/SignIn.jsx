@@ -52,7 +52,7 @@ const SignIn = () => {
     <div className="">
       <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage `}>
         <div className={`absolute font-[cursive]  top-28 w-full ${navControl?'transition-style1  ':'transition-style2 z-[1]'} font-semibold text-center text-white`}>
-          <span className="text-4xl md:text-6xl block font-bold mb-3">Account</span>
+          <span className="text-4xl md:text-6xl block font-bold mb-3 z-20">Account</span>
           <span className="text-xl md:text-2xl ">
             Please Log-In your Account
           </span>

@@ -25,16 +25,17 @@ const Root = () => {
           path: "/",
           element: <Home />,
         },
-        // {
-        //   path: "/home",
-        //   element: <Home />,
-        // },
+
         {
-          path: "/home/:id",
-          element: <Details />,
+          path: "/custom-package/:id",
+          element: (
+            <PrivateRoot>
+              <Details />
+            </PrivateRoot>
+          ),
           loader: ({ params }) =>
             fetch(
-              `https://service-review-server-pink.vercel.app/custom-service/${params.id}`
+              `https://service-review-server-pink.vercel.app/custom-service/${params.id}`,
             ),
         },
         {
@@ -46,23 +47,28 @@ const Root = () => {
           element: <ServiceDetails />,
           loader: ({ params }) =>
             fetch(
-              `https://service-review-server-pink.vercel.app/services/${params.id}`
+              `https://service-review-server-pink.vercel.app/services/${params.id}`,
             ),
         },
+
         {
           path: "/blog",
           element: (
             <PrivateRoot>
-              {" "}
+             
               <Blog />
             </PrivateRoot>
           ),
         },
         {
+          path: "/custom-packages",
+          element: <Services />,
+        },
+        {
           path: "/my-reviews",
           element: (
             <PrivateRoot>
-              <MyReviews/>
+              <MyReviews />
             </PrivateRoot>
           ),
         },
@@ -105,7 +111,7 @@ const Root = () => {
           ),
           loader: ({ params }) =>
             fetch(
-              `https://service-review-server-pink.vercel.app/services/${params.id}`
+              `https://service-review-server-pink.vercel.app/services/${params.id}`,
             ),
         },
       ],

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { PiStarThin } from "react-icons/pi";
 import { RxStarFilled } from "react-icons/rx";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthProvider } from "../../../Context/UserContext";
 const Details = () => {
@@ -66,13 +66,13 @@ const Details = () => {
             <h1 className="text-2xl font-bold">Sub-Total</h1>
             <p className="text-xl bg-base-300 ">BDT.{servicePrice}</p>
           </div>
-          <Link to="/home">
+          {/* <Link to="/home">
             <div onClick={deleteService} className=" mt-3">
               <button className="w-full hover:bg-[#c03e3e] hover:text-white hover:transition-all">
                 Delete this Service
               </button>
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
       {/* ----------------------------------------- */}

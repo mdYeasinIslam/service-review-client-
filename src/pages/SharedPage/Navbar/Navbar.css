@@ -27,6 +27,7 @@
 }
 ul> .active {
     background-color: white ;
+    border-radius: 5px;
     color: black;
     transition: all;
     transition-duration: 0.3s;

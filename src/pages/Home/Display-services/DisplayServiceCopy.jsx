@@ -24,7 +24,7 @@ const DisplayServiceCopy = ({ service }) => {
         <h2 className="card-title text-2xl capitalize">{serviceName}</h2>
         <p className="font-bold">Price : {servicePrice}BDT.</p>
         <p>{details?.slice(0, 100)}.......</p>
-        <Link to={`/home/${_id}`} onClick={findService}>
+        <Link to={`/custom-package/${_id}`} onClick={findService}>
           <button className="btn-custom">Details</button>
         </Link>
       </div>
