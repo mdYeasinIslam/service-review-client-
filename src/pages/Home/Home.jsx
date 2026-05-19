@@ -5,16 +5,16 @@ import "./Home.css";
 import TouristServices from "./TouristService/TouristServices";
 const Home = () => {
   return (
-    <div className=" bg-white">
+    <div className="bg-black/50 text-white ">
       <Banner />
       {/* Tourist Services */}
       <TouristServices />
       {/* Customize Services */}
-      <div className="w-full bg-base-300 ">
+      <div className="w-full border border-gray-600 ">
         <CustomServices />
       </div>
       {/* Additional packages */}
-      <div className="md:w-[95%] mx-auto rounded-2xl my-20">
+      <div className="md:w-[95%] mx-auto rounded-2xl ">
         <AdditionalPacks />
       </div>
     </div>

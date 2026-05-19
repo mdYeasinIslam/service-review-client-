@@ -18,7 +18,7 @@ const Service = ({ service }) => {
           />
         </PhotoView>
       </PhotoProvider>
-      <div className="card-body body-card text-white max-sm:p-2 sm:mt-5">
+      <div className="card-body body-card text-white max-sm:p-5 sm:mt-5">
         <h2 className="text-2xl font-bold">{name}</h2>
         <h4 className="font-semibold">
           <span className="text-xl">4</span> Day&lsquo;s By BDT.{price}

@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { useLoaderData, Link } from "react-router-dom";
-import { AuthProvider } from "../../../Context/UserContext";
-import { PhotoProvider, PhotoView } from "react-photo-view";
+import { useContext } from "react";
 import { PiStarThin } from "react-icons/pi";
 import { RxStarFilled } from "react-icons/rx";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import { Link, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthProvider } from "../../../Context/UserContext";
 const Details = () => {
   const serviceDetails = useLoaderData();
   const { navControl } = useContext(AuthProvider);

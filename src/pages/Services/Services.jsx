@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import Loader from "../../base-component/Loader";
 import { AuthProvider } from "../../Context/UserContext";
 import { useAxiosPublic } from "../../hooks/useAxiosPublic";
-import Service from "./Service";
 import "./Service.css";
+import ServiceCopy from "./ServiceCopy";
 const Services = () => {
   const { navControl } = useContext(AuthProvider);
   // console.log(navControl)
@@ -44,7 +44,7 @@ const Services = () => {
         <div>
           <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-[96%] mx-auto mt-10">
             {services.map((service) => (
-              <Service key={service._id} service={service} />
+              <ServiceCopy key={service._id} service={service} />
             ))}
           </div>
         </div>

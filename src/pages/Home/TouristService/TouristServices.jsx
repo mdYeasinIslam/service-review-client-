@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import Service from "../../Services/Service";
 import { useEffect, useState } from "react";
-import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 import Loader from "../../../base-component/Loader";
+import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
+import ServiceCopy from "../../Services/ServiceCopy";
 
 const TouristServices = () => {
   const [services, setServices] = useState([]);
@@ -27,33 +27,31 @@ const TouristServices = () => {
     }
   };
   return (
-    <section>
+    <section className="">
       <div className="container mx-auto py-8 md:pt-20">
-        <div className="w-full text-center text-black font-bold">
+        <div className="w-full text-center font-bold">
           <h3 className="text-3xl md:text-5xl">Enjoy Holiday Tours</h3>
-          <p className="mt-1 md:mt-2 text-slate-600">
+          <p className="mt-1 md:mt-2 text-slate-400">
             Pick The One Your Prefer
           </p>
         </div>
         {loading && <Loader />}
-
+        {/* <ServiceCopy/> */}
         {services?.length > 0 ? (
           <>
             <div className=" grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-6 md:mt-10">
               {services.map((service, idx) => (
-                <Service key={idx} service={service} />
+                <ServiceCopy key={idx} service={service} />
               ))}
             </div>
             <div className="text-center py-10">
               <Link to="/services">
-                <button className="border border-black text-black bg-transparent  hover:bg-[#213547] hover:text-white transition-all duration-300 max-sm:p-1 md:p-2">
-                  See more...
-                </button>
+                <button className="btn-custom">See more...</button>
               </Link>
             </div>
           </>
         ) : (
-          <div className="text-black text-2xl text-center my-10 font-semibold">
+          <div className=" text-2xl text-center my-10 font-semibold">
             No data available
           </div>
         )}
