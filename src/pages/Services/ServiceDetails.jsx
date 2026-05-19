@@ -13,27 +13,25 @@ const ServiceDetails = () => {
   const [selector, setSelector] = useState(false);
   const [adult, setAdult] = useState(false);
   const { _id, img, name, price, rating, details } = service;
-  console.log(service)
+  console.log(service);
   return (
     <section className="pb-10 bg-base-300">
-      <div className="container mx-auto">
-        {/* Header */}
-        <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage mb-10`}>
-          <div
-            className={`absolute font-[cursive] top-28 w-full ${
-              navControl ? "transition-style1" : "transition-style2 z-[1]"
-            } font-semibold text-center text-white`}
-          >
-            <span className="text-2xl md:text-5xl block mb-2 font-[800]">
-              {name}
-            </span>
-            <span className="text-xl md:text-2xl">Enjoy Our Service</span>
-          </div>
+      {/* Header */}
+      <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage mb-5 md:mb-10`}>
+        <div
+          className={`absolute font-[cursive] top-28 w-full ${
+            navControl ? "transition-style1" : "transition-style2 z-[1]"
+          } font-semibold text-center text-white`}
+        >
+          <span className="text-2xl md:text-5xl block mb-2 font-[800]">
+            {name}
+          </span>
+          <span className="text-xl md:text-2xl">Enjoy Our Service</span>
         </div>
+      </div>
 
-        {/* Service Details */}
-        <div className="grid md:grid-cols-2 w-[95%] mx-auto gap-5">
-          {/* Image */}
+      <div className="container mx-auto">
+        <div className="grid md:grid-cols-2 max-w-7xl mx-auto gap-5">
           <PhotoProvider>
             <PhotoView src={img}>
               <img
@@ -45,7 +43,7 @@ const ServiceDetails = () => {
           </PhotoProvider>
 
           {/* Info */}
-          <div className="pl-5 space-y-6">
+          <div className="lg:pl-5 space-y-6">
             <div>
               <h1 className="text-white font-[800] text-4xl">{name}</h1>
               <p className="text-2xl mt-5">BDT. {price}</p>
@@ -90,11 +88,10 @@ const ServiceDetails = () => {
                 can join!
               </p>
             </div>
-
-            <div className="border-t pt-4">
+            <hr />
+            <div className="pb-2">
               <p className="text-xl font-bold">
-                Sub-Total:{" "}
-                <span className="bg-base-300 ml-2 px-2">৳{price}</span>
+                Sub-Total :<span className="bg-base-300 ml-2">৳{price}</span>
               </p>
             </div>
 
@@ -122,8 +119,8 @@ const ServiceDetails = () => {
         </div>
 
         {/* Tabs */}
-        <div className="py-10 md:py-32">
-          <div className="flex gap-4 border-b-3 border-black bg-base-300">
+        <div className="pt-10 md:pt-32 ">
+          <div className="flex gap-4 bg-base-300">
             {[
               { label: "Description", value: false },
               { label: "Review", value: true },

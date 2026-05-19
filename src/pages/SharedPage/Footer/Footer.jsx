@@ -26,7 +26,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer p-10 bg-base-300 text-base-content">
+    <footer className="footer p-10 bg-base-300 text-base-content border-t border-gray-500">
       {sections.map((section) => (
         <nav key={section.title}>
           <header className="footer-title">{section.title}</header>

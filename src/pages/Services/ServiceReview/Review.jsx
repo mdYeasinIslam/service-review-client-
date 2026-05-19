@@ -1,19 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PiStarThin } from "react-icons/pi";
 import { RxStarFilled } from "react-icons/rx";
-import "./Review.css";
-import { AuthProvider } from "../../../Context/UserContext";
-import AllReview from "./AllReview";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthProvider } from "../../../Context/UserContext";
 import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
+import AllReview from "./AllReview";
+import "./Review.css";
 const Review = ({ service }) => {
   const { _id, rating, name } = service;
   const [reviews, setReviews] = useState([]);
   const [count, setCount] = useState(0);
   const { user, photoURL } = useContext(AuthProvider);
   const [review, setReview] = useState(false);
-  const axiosPublic =useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
 
   const formHandler = (e) => {
     e.preventDefault();
@@ -68,17 +68,17 @@ const Review = ({ service }) => {
     //     // console.log(data);
     //     setReviews(data);
     //   });
-    fetchData()
+    fetchData();
   }, [count]);
   const fetchData = async () => {
-    const res =await axiosPublic.get(`/review/${_id}`)
+    const res = await axiosPublic.get(`/review/${_id}`);
     if (res.data) {
-      setReviews(res?.data)
+      setReviews(res?.data);
     }
-  }
+  };
   return (
-    <div className="font-[cursive]">
-      <div className="w-[93%] mx-auto">
+    <div className="pt-8 md:pt-10 ">
+      <div className="md:w-[93%] mx-auto">
         <div className="space-y-2">
           <h3 className="text-2xl font-bold">Customer Review </h3>
           <p className="flex text-orange-500  space-x-2">
@@ -108,21 +108,10 @@ const Review = ({ service }) => {
                   name="name"
                   id=""
                   placeholder="Enter your name"
-                  className="w-full border-2 border-black py-2 rounded bg-base-300"
+                  className="w-full input border-2 border-slate-500 py-2 rounded bg-base-300 mt-1"
                   required
                 />
               </div>
-              {/* <div className="">
-                <label className="text-xl ">Email :</label> <br />
-                <input
-                  type="email"
-                  name="email"
-                  id=""
-                  placeholder={user?.email}
-                  className="w-full border-2 border-black py-2 rounded bg-base-300"
-                  required
-                />
-              </div> */}
 
               <div className="">
                 <label className="text-xl ">Review Title :</label> <br />
@@ -131,19 +120,18 @@ const Review = ({ service }) => {
                   name="reviewTitle"
                   id=""
                   placeholder="Title of Review"
-                  className="w-full border-2 border-black py-2 rounded bg-base-300"
+                  className="w-full input border-2 border-slate-500 py-2 rounded bg-base-300 mt-1"
                   required
                 />
               </div>
               <div className="">
-                <label className="text-xl ">Body Of Review (1500):</label>{" "}
-                <br />
+                <label className="text-xl">Body Of Review:</label>
                 <input
                   type="text"
                   name="reviewBody"
                   id=""
                   placeholder="Write your opinion with 1500 characters"
-                  className="w-full input-lg border-2 border-black py-2 rounded bg-base-300"
+                  className="w-full input border-2 border-slate-500 py-2 rounded bg-base-300 mt-1"
                   required
                 />
               </div>
@@ -175,7 +163,7 @@ const Review = ({ service }) => {
           ) : (
             <>
               <p className="text-red-600 font-bold">
-                You Don't have any account.
+                You Don&lsquo;t have any account.
                 <Link to="/signIn" className="underline">
                   Please Log-in first
                 </Link>
