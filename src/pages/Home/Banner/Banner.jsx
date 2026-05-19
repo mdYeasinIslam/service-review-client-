@@ -29,8 +29,7 @@ const Banner = () => {
       },
     ];
   return (
-    <div className="carousel w-full  
-     ">
+    <div className="carousel w-full">
      {
         sliderImg.map(slider => <BannerItem key={slider.id} slider ={slider} />)
      }

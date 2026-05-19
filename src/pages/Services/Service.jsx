@@ -1,10 +1,9 @@
-import React from "react";
-import "./Service.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
+import "./Service.css";
 
 const Service = ({ service }) => {
-  const { _id, name, img, price, details, gridColumn } = service;
+  const { _id, name, img, price, details } = service;
   console.log(typeof service.gridColumn);
   // ${gridColumn/2  ==1? 'md:col-span-2':'col-span-1 '}
   return (
@@ -23,7 +22,7 @@ const Service = ({ service }) => {
       <div className="card-body body-card text-white grid content-end ">
         <h2 className="text-2xl font-bold">{name}</h2>
         <h4 className="font-semibold">
-          <span className="text-xl">4</span> Day's By BDT.{price}{" "}
+          <span className="text-xl">4</span> Day&lsquo;s By BDT.{price}{" "}
         </h4>
         <p className="details ">{details.slice(0, 80)}.....</p>
         <div className="z-10 w-full ">
