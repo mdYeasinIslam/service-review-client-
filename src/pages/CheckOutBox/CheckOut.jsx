@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import baseImg from "../../assets/logo7 (1).png";
-import { useLoaderData, Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
-import TouristInfo from "./TouristInfo";
+import baseImg from "../../assets/logo7 (1).png";
 import { AuthProvider } from "../../Context/UserContext";
 import { useAxiosPublic } from "../../hooks/useAxiosPublic";
+import TouristInfo from "./TouristInfo";
 
 const CheckOut = () => {
   const servicedata = useLoaderData();
@@ -34,7 +34,7 @@ const CheckOut = () => {
       number,
     };
     // console.log(touristInfo);
-    fetch(`https://service-review-server-pink.vercel.app/tourist-Info`, {
+    fetch(`https://adventa-server.vercel.app/tourist-Info`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,25 +55,25 @@ const CheckOut = () => {
       });
   };
   useEffect(() => {
-    // fetch("https://service-review-server-pink.vercel.app/tourist-Info")
+    // fetch("https://adventa-server.vercel.app/tourist-Info")
     //   .then((res) => res.json())
     //   .then((data) => {
     //     const filter = data.filter((d) => d.placeId == _id);
     //     // console.log(filter);
     //     setTouristDetails(filter);
     //   });
-    fetchData()
+    fetchData();
   }, [infoSubmitted]);
-   const fetchData = async() => {
-    const res = await axiosPublic.get('/tourist-Info')
-    console.log(res.data)
+  const fetchData = async () => {
+    const res = await axiosPublic.get("/tourist-Info");
+    console.log(res.data);
     if (res.data) {
-      setServices(res.data)
+      setServices(res.data);
     }
-  }
+  };
   // console.log(infoSubmitted);
   const deleteInfo = (id) => {
-    fetch(`https://service-review-server-pink.vercel.app/tourist-Info/${id}`, {
+    fetch(`https://adventa-server.vercel.app/tourist-Info/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -88,12 +88,11 @@ const CheckOut = () => {
       <figure className="w-full bg-[#213547] md:text-center">
         <img src={baseImg} alt="" className="h-28 mx-auto" />
       </figure>
-
       {/* <hr className="my-5 border-2 bg-[#213547] " /> */}
 
-      <div className="md:grid grid-cols-2 py-10 space-x-3">
-        <div className="md:grid justify-end border-y-2 border-r-2 rounded-xl border-gray-300 ">
-          <div className="w-[95%] mx-auto lg:w-full ">
+      <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 pb-10">
+        <div className="md:grid justify-center border-y-2 border-r-2 border-gray-700  py-2 px-4">
+          <div className="md:w-[95%] mx-auto lg:w-full ">
             {infoSubmitted ? (
               <div className="relative top-20 font-bold text-xl">
                 <p>
@@ -242,7 +241,7 @@ const CheckOut = () => {
             </>
           )}
         </div>
-        <div className="w-[96%] mx-auto md:w-full border-y-2 border-r-2 border-gray-300 rounded-xl bg-base-300 py-8">
+        <div className="w-full border-y-2 border-r-2 border-gray-700 bg-base-300 py-8">
           <div className="card w-[90%]  md:w-96 mx-auto bg-base-100 shadow-xl image-full">
             <figure className="w-full">
               <img src={img} alt={name} className="" />
@@ -253,8 +252,8 @@ const CheckOut = () => {
               <p>Duration : 4 days</p>
             </div>
           </div>
-          <div className=" border-2 border-black w-3/4  my-10 lg:w-1/2 px-2 py-5 mx-auto ">
-            <p className="text-xl font-bold  ">
+          <div className=" border-2 border-slate-700 w-3/4  my-10 lg:w-1/2 px-2 py-5 mx-auto ">
+            <p className="text-xl text-center font-bold  ">
               Total Cost : BDT. {price} for 4 days <br />
             </p>
           </div>

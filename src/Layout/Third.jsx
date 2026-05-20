@@ -1,13 +1,11 @@
-import React from "react";
-import Navbar from "../pages/SharedPage/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 
 const Third = () => {
   return (
     <div>
-      <div className="absolute z-[1] w-full text-white">
-        <Navbar />
-      </div>
+      {/* <div className="absolute z-[1] w-full text-white">
+        <NavbarCopy />
+      </div> */}
       <Outlet />
     </div>
   );

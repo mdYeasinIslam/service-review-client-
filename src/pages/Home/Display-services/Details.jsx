@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { useLoaderData, Link } from "react-router-dom";
-import { AuthProvider } from "../../../Context/UserContext";
-import { PhotoProvider, PhotoView } from "react-photo-view";
+import { useContext } from "react";
 import { PiStarThin } from "react-icons/pi";
 import { RxStarFilled } from "react-icons/rx";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthProvider } from "../../../Context/UserContext";
 const Details = () => {
   const serviceDetails = useLoaderData();
   const { navControl } = useContext(AuthProvider);
@@ -13,12 +13,9 @@ const Details = () => {
     serviceDetails;
 
   const deleteService = () => {
-    fetch(
-      `https://service-review-server-pink.vercel.app/custom-service/${_id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`https://adventa-server.vercel.app/custom-service/${_id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -66,13 +63,13 @@ const Details = () => {
             <h1 className="text-2xl font-bold">Sub-Total</h1>
             <p className="text-xl bg-base-300 ">BDT.{servicePrice}</p>
           </div>
-          <Link to="/home">
+          {/* <Link to="/home">
             <div onClick={deleteService} className=" mt-3">
               <button className="w-full hover:bg-[#c03e3e] hover:text-white hover:transition-all">
                 Delete this Service
               </button>
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
       {/* ----------------------------------------- */}

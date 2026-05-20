@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 import { AuthProvider } from "../../Context/UserContext";
 import img from "../../assets/image/custom-service/travel-world.jpg";
-import { toast } from "react-toastify";
-import ImageUpload from "../SharedPage/ImageUpload/ImageUpload";
 import { useAxiosPublic } from "../../hooks/useAxiosPublic";
+import ImageUpload from "../SharedPage/ImageUpload/ImageUpload";
 
 const AddServices = () => {
   const { navControl, imgUrl } = useContext(AuthProvider);
@@ -12,7 +12,7 @@ const AddServices = () => {
     e.preventDefault();
     const form = e.target;
     const serviceName = form.serviceName.value;
-    const serviceImg = form.serviceImg.value;
+    // const serviceImg = form.serviceImg.value;
     const servicePrice = form.price.value;
     const details = form.details.value;
     const serviceInfo = {
@@ -21,14 +21,14 @@ const AddServices = () => {
       servicePrice,
       details,
     };
-    const res = await axiosPublic.post('/custom-service', { serviceInfo })
-    console.log(res)
+    const res = await axiosPublic.post("/custom-service", { ...serviceInfo });
+    console.log(res);
     if (res.data?.acknowledged) {
       toast("Service is added successfully");
       form.reset();
     }
-      
-    // fetch(`https://service-review-server-pink.vercel.app/custom-service`, {
+
+    // fetch(`https://adventa-server.vercel.app/custom-service`, {
     //   method: "POST",
     //   headers: {
     //     "content-type": "application/json",

@@ -1,19 +1,18 @@
-import React from "react";
-import img from "../../../assets/image/packs3.avif";
-import img1 from "../../../assets/image/packs2.webp";
-import img2 from "../../../assets/image/camp.avif";
 import img3 from "../../../assets/image/bike-travel.jpg";
+import img2 from "../../../assets/image/camp.avif";
+import img1 from "../../../assets/image/packs2.webp";
+import img from "../../../assets/image/packs3.avif";
 const AdditionalPacks = () => {
   return (
-    <div className="text-white lg:grid grid-cols-2  rounded-xl ">
-      <div className="md:p-12 p-2 bg-lime-950 h-full md:rounded-l-xl">
+    <div className="lg:grid grid-cols-2  rounded-xl py-10 md:py-20">
+      <div className="md:p-12 p-2 bg-indigo-950 h-full md:rounded-l-xl">
         <h3 className="text-xl mt-5 font-semibold font-[cursive]">
           Just Relax And Enjoy
         </h3>
         <p className="text-5xl my-10 font-bold font-serif ">Packs Includes !</p>
         <div className="border-2 w-full  rounded-xl">
           <div>
-            <div className="md:flex w-[90%] py-4 my-2  mx-auto items-center  rounded overflow-hidden shadow-lg transition-transform transform hover:bg-lime-800 hover:scale-105 duration-500 ease-in-out">
+            <div className="md:flex w-[90%] py-4 my-2  mx-auto items-center  rounded overflow-hidden shadow-lg transition-transform transform hover:bg-blue-900 hover:scale-105 duration-500 ease-in-out">
               <figure className="w-full md:w-52  h-full">
                 <img
                   className="md:w-[90%] h-[10rem] md:h-[7rem] lg:h-[5rem] mx-auto rounded-xl  object-cover"
@@ -29,7 +28,7 @@ const AdditionalPacks = () => {
                 </p>
               </div>
             </div>
-            <div className="md:flex w-[90%] py-4 my-2  mx-auto items-center  rounded overflow-hidden shadow-lg transition-transform transform hover:bg-lime-800 hover:scale-105 duration-500 ease-in-out">
+            <div className="md:flex w-[90%] py-4 my-2  mx-auto items-center  rounded overflow-hidden shadow-lg transition-transform transform hover:bg-blue-900 hover:scale-105 duration-500 ease-in-out">
               <figure className="w-full md:w-56 h-full">
                 <img
                   className="md:w-[90%] h-[10rem] md:h-[7rem] lg:h-[5rem] mx-auto rounded-xl  object-cover"
@@ -47,7 +46,7 @@ const AdditionalPacks = () => {
                 </p>
               </div>
             </div>
-            <div className="md:flex w-[90%] py-4 my-2  mx-auto items-center  rounded overflow-hidden shadow-lg transition-transform transform hover:bg-lime-800 hover:scale-105 duration-500 ease-in-out">
+            <div className="md:flex w-[90%] py-4 my-2  mx-auto items-center  rounded overflow-hidden shadow-lg transition-transform transform hover:bg-blue-900 hover:scale-105 duration-500 ease-in-out">
               <figure className="w-full md:w-60  h-full">
                 <img
                   className="md:w-[90%] h-[10rem] md:h-[6rem] lg:h-[5rem] mx-auto rounded-xl  object-cover"
