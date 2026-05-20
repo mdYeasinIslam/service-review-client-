@@ -21,14 +21,14 @@ const AddServices = () => {
       servicePrice,
       details,
     };
-    const res = await axiosPublic.post('/custom-service', { ...serviceInfo })
-    console.log(res)
+    const res = await axiosPublic.post("/custom-service", { ...serviceInfo });
+    console.log(res);
     if (res.data?.acknowledged) {
       toast("Service is added successfully");
       form.reset();
     }
-      
-    // fetch(`https://service-review-server-pink.vercel.app/custom-service`, {
+
+    // fetch(`https://adventa-server.vercel.app/custom-service`, {
     //   method: "POST",
     //   headers: {
     //     "content-type": "application/json",

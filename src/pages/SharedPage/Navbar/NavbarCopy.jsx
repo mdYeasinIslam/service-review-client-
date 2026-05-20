@@ -39,8 +39,8 @@ const NavbarCopy = () => {
   ];
 
   return (
-    <header className="border-b border-neutral-800 bg-black/70 sticky top-0 z-50 backdrop-blur-md">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 border-b border-neutral-800 bg-black/70 z-50 backdrop-blur-md">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
@@ -76,7 +76,7 @@ const NavbarCopy = () => {
               <>
                 <button
                   onClick={signOut}
-                  className="text-neutral-400 hover:text-white transition-colors"
+                  className="px-2 py-1 text-neutral-400 hover:text-white transition-colors"
                 >
                   Sign Out
                 </button>
@@ -94,7 +94,7 @@ const NavbarCopy = () => {
             ) : (
               <NavLink
                 to="/signIn"
-                className="bg-amber-500 hover:bg-amber-400 transition-colors text-black text-sm font-semibold px-4 py-2 rounded-lg"
+                className="bg-[var(--primary-button-500)] hover:bg-[var(--primary-button-400)] transition-colors text-black text-sm font-semibold px-4 py-2 rounded-lg"
               >
                 Sign In
               </NavLink>
@@ -112,54 +112,53 @@ const NavbarCopy = () => {
             </button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {show && (
-          <nav
-            onClick={closeMenu}
-            className="md:hidden pb-4 pt-2 border-t border-neutral-800"
-          >
-            <div className="flex flex-col gap-3 text-sm text-neutral-400">
-              {navLinks.map((link) => (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-white font-medium transition-colors"
-                      : "hover:text-white transition-colors"
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              ))}
-              {user?.email ? (
-                <>
-                  <button
-                    onClick={signOut}
-                    className="text-left text-neutral-400 hover:text-white transition-colors"
-                  >
-                    Sign Out
-                  </button>
-                  <NavLink
-                    to="/profile"
-                    className="text-neutral-400 hover:text-white"
-                  >
-                    Profile
-                  </NavLink>
-                </>
-              ) : (
-                <NavLink
-                  to="/signIn"
-                  className="bg-amber-500 hover:bg-amber-400 transition-colors text-black text-sm font-semibold px-4 py-2 rounded-lg inline-block"
-                >
-                  Sign In
-                </NavLink>
-              )}
-            </div>
-          </nav>
-        )}
       </div>
+      {/* Mobile Navigation */}
+      {show && (
+        <nav
+          onClick={closeMenu}
+          className="md:hidden absolute w-full pt-5 pb-10 px-5  border-t border-neutral-800 bg-black "
+        >
+          <div className="flex flex-col gap-5 text-sm text-neutral-400">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-white font-medium transition-colors"
+                    : "hover:text-white transition-colors"
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+            {user?.email ? (
+              <>
+                <button
+                  onClick={signOut}
+                  className="text-left text-neutral-400 hover:text-white transition-colors"
+                >
+                  Sign Out
+                </button>
+                <NavLink
+                  to="/profile"
+                  className="text-neutral-400 hover:text-white"
+                >
+                  Profile
+                </NavLink>
+              </>
+            ) : (
+              <NavLink
+                to="/signIn"
+                className="bg-amber-500 hover:bg-amber-400 transition-colors text-black text-sm font-semibold px-4 py-2 rounded-lg inline-block"
+              >
+                Sign In
+              </NavLink>
+            )}
+          </div>
+        </nav>
+      )}
     </header>
   );
 };

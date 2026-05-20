@@ -42,7 +42,7 @@ const Review = ({ service }) => {
       time,
     };
     // console.log(review);
-    fetch(`https://service-review-server-pink.vercel.app/review`, {
+    fetch(`https://adventa-server.vercel.app/review`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -62,7 +62,7 @@ const Review = ({ service }) => {
       .catch((e) => console.error(e));
   };
   useEffect(() => {
-    // fetch(`https://service-review-server-pink.vercel.app/review/${_id}`)
+    // fetch(`https://adventa-server.vercel.app/review/${_id}`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     // console.log(data);

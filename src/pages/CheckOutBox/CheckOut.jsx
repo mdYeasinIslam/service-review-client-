@@ -34,7 +34,7 @@ const CheckOut = () => {
       number,
     };
     // console.log(touristInfo);
-    fetch(`https://service-review-server-pink.vercel.app/tourist-Info`, {
+    fetch(`https://adventa-server.vercel.app/tourist-Info`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,25 +55,25 @@ const CheckOut = () => {
       });
   };
   useEffect(() => {
-    // fetch("https://service-review-server-pink.vercel.app/tourist-Info")
+    // fetch("https://adventa-server.vercel.app/tourist-Info")
     //   .then((res) => res.json())
     //   .then((data) => {
     //     const filter = data.filter((d) => d.placeId == _id);
     //     // console.log(filter);
     //     setTouristDetails(filter);
     //   });
-    fetchData()
+    fetchData();
   }, [infoSubmitted]);
-   const fetchData = async() => {
-    const res = await axiosPublic.get('/tourist-Info')
-    console.log(res.data)
+  const fetchData = async () => {
+    const res = await axiosPublic.get("/tourist-Info");
+    console.log(res.data);
     if (res.data) {
-      setServices(res.data)
+      setServices(res.data);
     }
-  }
+  };
   // console.log(infoSubmitted);
   const deleteInfo = (id) => {
-    fetch(`https://service-review-server-pink.vercel.app/tourist-Info/${id}`, {
+    fetch(`https://adventa-server.vercel.app/tourist-Info/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const blogPosts = [
   {
@@ -182,9 +183,9 @@ export default function BlogPage() {
       style={{ backgroundColor: "#0a0a0a" }}
     >
       <div className="container mx-auto">
-        {/* ── HERO BANNER ── */}
+        {/* banner── */}
         <section className="bg-neutral-950 border-b border-neutral-800">
-          <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <div className=" mx-auto py-8 md:py-24">
             <div className="max-w-2xl">
               <span className="inline-block bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full mb-5">
                 The WanderLog Journal
@@ -230,8 +231,8 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* ── MAIN CONTENT ── */}
-        <main className="px-4 sm:px-6 lg:px-8 py-12">
+        {/* main content*/}
+        <main className="py-12">
           <div className="flex flex-col lg:flex-row gap-10">
             {/* ── LEFT: POSTS ── */}
             <div className="flex-1 min-w-0">
@@ -389,13 +390,13 @@ export default function BlogPage() {
               )}
 
               {/* Load More */}
-              {filtered.length > 0 && (
+              {/* {filtered.length > 0 && (
                 <div className="text-center mt-12">
                   <button className="border border-neutral-700 hover:border-amber-500 hover:text-amber-400 text-neutral-400 text-sm font-medium px-8 py-3 rounded-full transition-all">
                     Load More Articles
                   </button>
                 </div>
-              )}
+              )} */}
             </div>
 
             {/* ── SIDEBAR ── */}
@@ -512,15 +513,17 @@ export default function BlogPage() {
                   Let us plan your next adventure — personalised itineraries
                   from our travel experts.
                 </p>
-                <button className="w-full bg-amber-500 hover:bg-amber-400 transition-colors text-black font-semibold text-xs py-2.5 rounded-lg">
-                  Start Planning →
-                </button>
+                <Link to="/services">
+                  <button className="w-full bg-amber-500 hover:bg-amber-400 transition-colors text-black font-semibold text-xs py-2.5 rounded-lg">
+                    Start Planning →
+                  </button>
+                </Link>
               </div>
             </aside>
           </div>
         </main>
 
-        {/* ── FULL WIDTH CTA ── */}
+        {/* cta */}
         <section className="border-t border-neutral-800 bg-neutral-950 mt-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
             <span className="text-4xl mb-4 block">✈️</span>

@@ -10,7 +10,7 @@ const MyReviews = () => {
   const [loading, setLoading] = useState(true);
   const axiosPublic =useAxiosPublic()
   useEffect(() => {
-    // fetch(`https://service-review-server-pink.vercel.app/review`)
+    // fetch(`https://adventa-server.vercel.app/review`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     // console.log(data);
@@ -20,7 +20,7 @@ const MyReviews = () => {
     //     setLoading(false);
     //     setReviews(filter.reverse());
     //   });
-    fetchData()
+    fetchData();
   }, [reRender]);
   const fetchData = async () => {
     const res = await axiosPublic.get('/review')

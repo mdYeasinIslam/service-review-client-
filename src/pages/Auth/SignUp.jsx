@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { AuthProvider } from "../../Context/UserContext";
 import ImageUpload from "../SharedPage/ImageUpload/ImageUpload";
 const SignUp = () => {
-  const { signUp, navControl, updateUser, imgUrl } = useContext(AuthProvider);
+  const { signUp, updateUser, imgUrl } = useContext(AuthProvider);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const formHandler = (e) => {
@@ -20,9 +20,7 @@ const SignUp = () => {
   };
   const signUpAuth = (email, password, form, profile) => {
     signUp(email, password)
-      .then((result) => {
-        const user = result.user;
-        // console.log(user)
+      .then(() => {
         updateProfile(profile);
         form.reset();
         toast("Your account is created");
@@ -44,8 +42,8 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage `}>
+    <div className="bg-black/50 h-screen">
+      {/* <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage `}>
         <div
           className={`absolute font-[cursive]  top-28 w-full ${navControl?'transition-style1  ':'transition-style2 z-[1]'} font-semibold text-center text-white`}
         >
@@ -56,13 +54,13 @@ const SignUp = () => {
             Please Create an Account
           </span>
         </div>
-      </div>
-      <div className="hero pt-10 bg-base-200 pb-12">
-        <div className="card flex-shrink-0 w-full mx-auto md:w-[70%] lg:w-[50%]  shadow-2xl bg-base-100">
+      </div> */}
+      <div className="h-full container mx-auto flex flex-col lg:flex-row justify-center items-center gap-5  bg-base-200 ">
+        <div className=" w-full mx-auto md:w-[70%] lg:w-[50%]  shadow-2xl px-2 py-2">
           <h3 className="text-2xl text-center font-bold mt-3">
             Create your Account
           </h3>
-          <form onSubmit={formHandler} className="card-body">
+          <form onSubmit={formHandler} className="space-y-5">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Your Full Name:</span>
@@ -82,8 +80,9 @@ const SignUp = () => {
               <input
                 type="url"
                 name="photoURL"
+                value={imgUrl}
                 placeholder={imgUrl}
-                className="input input-bordered mb-2" 
+                className="input input-bordered mb-2"
                 readOnly
               />
               <ImageUpload />
@@ -117,9 +116,16 @@ const SignUp = () => {
               <button className="btn btn-primary">Sign-Up</button>
             </div>
             <p>
-              Already have an account ?? <Link to="/signIn">Please Log-In</Link>
+              <Link to="/signIn" className="hover:underline">Already have an account ?? Please Log-In</Link>
             </p>
           </form>
+        </div>
+        <div className=" max-lg:hidden">
+          <img
+            src="https://i.ibb.co.com/W48BLvVh/sign-up-form-button-graphic-concept-53876-123684.jpg"
+            alt=""
+            className="w-full h-full"
+          />
         </div>
       </div>
     </div>

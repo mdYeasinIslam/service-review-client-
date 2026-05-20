@@ -13,12 +13,9 @@ const Details = () => {
     serviceDetails;
 
   const deleteService = () => {
-    fetch(
-      `https://service-review-server-pink.vercel.app/custom-service/${_id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`https://adventa-server.vercel.app/custom-service/${_id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

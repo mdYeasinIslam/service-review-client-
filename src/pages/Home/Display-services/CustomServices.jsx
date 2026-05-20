@@ -6,7 +6,7 @@ const CustomServices = () => {
   const [services, setServices] = useState([]);
   const axiosPublic = useAxiosPublic();
   useEffect(() => {
-    // fetch(`https://service-review-server-pink.vercel.app/custom-service`)
+    // fetch(`https://adventa-server.vercel.app/custom-service`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     // console.log(data);

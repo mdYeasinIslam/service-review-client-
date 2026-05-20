@@ -10,7 +10,7 @@ const TouristServices = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // fetch("https://service-review-server-pink.vercel.app/services?name=hasan")
+    // fetch("https://adventa-server.vercel.app/services?name=hasan")
     //   .then((res) => res.json())
     //   .then((data) => {
     //     // console.log(data);
@@ -46,7 +46,9 @@ const TouristServices = () => {
             </div>
             <div className="text-center py-10">
               <Link to="/services">
-                <button className="btn-custom">See more...</button>
+                <button className="btn-custom hover:bg-[var(--primary-button-500)] hover:text-white">
+                  See more...
+                </button>
               </Link>
             </div>
           </>

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { CiEdit } from "react-icons/ci";
+import { useState } from "react";
 import { AiTwotoneDelete } from "react-icons/ai";
+import { CiEdit } from "react-icons/ci";
 import { toast } from "react-toastify";
 
 const ShowReviews = ({ rev, setReRender, reRender }) => {
@@ -12,7 +12,7 @@ const ShowReviews = ({ rev, setReRender, reRender }) => {
     const title = form.reviewTitle.value;
     const body = form.reviewBody.value;
     const review = { title, body };
-    fetch(`https://service-review-server-pink.vercel.app/review/${_id}`, {
+    fetch(`https://adventa-server.vercel.app/review/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -30,7 +30,7 @@ const ShowReviews = ({ rev, setReRender, reRender }) => {
       });
   };
   const deleteOperation = () => {
-    fetch(`https://service-review-server-pink.vercel.app/review/${_id}`, {
+    fetch(`https://adventa-server.vercel.app/review/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

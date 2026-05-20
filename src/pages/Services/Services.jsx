@@ -11,7 +11,7 @@ const Services = () => {
   const [loading, setLoading] = useState(false);
   const axiosPublic = useAxiosPublic();
   useEffect(() => {
-    // fetch("https://service-review-server-pink.vercel.app/services")
+    // fetch("https://adventa-server.vercel.app/services")
     //   .then((res) => res.json())
     //   .then((data) => {
     //     // console.log(data);

@@ -35,7 +35,7 @@ const Root = () => {
           ),
           loader: ({ params }) =>
             fetch(
-              `https://service-review-server-pink.vercel.app/custom-service/${params.id}`,
+              `https://adventa-server.vercel.app/custom-service/${params.id}`,
             ),
         },
         {
@@ -46,19 +46,12 @@ const Root = () => {
           path: "/services/:id",
           element: <ServiceDetails />,
           loader: ({ params }) =>
-            fetch(
-              `https://service-review-server-pink.vercel.app/services/${params.id}`,
-            ),
+            fetch(`https://adventa-server.vercel.app/services/${params.id}`),
         },
 
         {
           path: "/blog",
-          element: (
-            <PrivateRoot>
-             
-              <Blog />
-            </PrivateRoot>
-          ),
+          element: <Blog />,
         },
         {
           path: "/custom-packages",
@@ -110,9 +103,7 @@ const Root = () => {
             </PrivateRoot>
           ),
           loader: ({ params }) =>
-            fetch(
-              `https://service-review-server-pink.vercel.app/services/${params.id}`,
-            ),
+            fetch(`https://adventa-server.vercel.app/services/${params.id}`),
         },
       ],
     },

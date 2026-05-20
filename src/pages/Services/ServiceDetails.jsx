@@ -13,7 +13,6 @@ const ServiceDetails = () => {
   const [selector, setSelector] = useState(false);
   const [adult, setAdult] = useState(false);
   const { _id, img, name, price, rating, details } = service;
-  console.log(service);
   return (
     <section className="pb-10 bg-base-300">
       {/* Header */}

@@ -66,7 +66,7 @@ const ServiceCopy = ({ service }) => {
             />
           </PhotoView>
         </PhotoProvider>
-        <div className="absolute flex flex-col justify-center text-white h-full p-4 gap-2 z-10">
+        <div className="absolute w-full flex flex-col justify-end text-white h-full p-4 gap-2 z-10">
           <h3 className="text-xl md:text-2xl 2xl:text-3xl font-bold ">
             {name}
           </h3>
@@ -74,7 +74,7 @@ const ServiceCopy = ({ service }) => {
           <Link to={`/services/${_id}`}>
             <button
               // className="text-white bg-slate-900 rounded md:rounded-lg text-xs md:text-base font-semibold capitalize py-1 px-3 md:py-2 md:px-4 "
-              className="btn-custom"
+              className="btn-custom w-full "
             >
               Details
             </button>

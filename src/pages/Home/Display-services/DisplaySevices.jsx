@@ -4,13 +4,12 @@ const DisplaySevices = ({ serv }) => {
   const { serviceName, serviceImg, servicePrice, _id, details } = serv;
   const axiosPublic =useAxiosPublic()
   const findService = async() => {
-    // fetch(`https://service-review-server-pink.vercel.app/custom-service/${_id}`)
+    // fetch(`https://adventa-server.vercel.app/custom-service/${_id}`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     // console.log(data);
     //   });
-     await axiosPublic.get(`/custom-service/${_id}`)
-  
+    await axiosPublic.get(`/custom-service/${_id}`);
   };
   return (
     <div className="card w-[90%] h-[20rem] mx-auto bg-base-100 shadow-xl image-full transition-transform transform  hover:scale-105 duration-500 ease-in-out">
