@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 import {
   Link,
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { AuthProvider } from "../../Context/UserContext";
 import { toast } from "react-toastify";
-import { FcGoogle } from "react-icons/fc";
+import { AuthProvider } from "../../Context/UserContext";
 const SignIn = () => {
   const { signIn, google,navControl } = useContext(AuthProvider);
   const [error, setError] = useState("");
@@ -43,7 +43,7 @@ const SignIn = () => {
       .then((result) => {
         const user = result.user;
         navigate(from, { replace: true });
-        toast('You are loged in successfully')
+        toast('You are logged in successfully')
         // console.log(user);
       })
       .catch((e) => setError(e.message));
@@ -92,7 +92,7 @@ const SignIn = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
               <p>
-                Don't have any account ??{" "}
+                Don&lsquo;t have any account ??{" "}
                 <Link to="/signUp">Please Create an Account</Link>
               </p>
             </form>

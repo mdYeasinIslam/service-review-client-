@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthProvider } from "../../Context/UserContext";
 import { toast } from "react-toastify";
+import { AuthProvider } from "../../Context/UserContext";
 import ImageUpload from "../SharedPage/ImageUpload/ImageUpload";
 const SignUp = () => {
   const { signUp, navControl, updateUser, imgUrl } = useContext(AuthProvider);
@@ -26,7 +26,7 @@ const SignUp = () => {
         updateProfile(profile);
         form.reset();
         toast("Your account is created");
-        navigate("/home");
+        navigate("/");
       })
       .catch((e) => {
         // console.error(e);

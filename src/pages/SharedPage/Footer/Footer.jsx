@@ -4,12 +4,16 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   const sections = [
     {
-      title: "Services",
-      links: ["Branding", "Design", "Marketing", "Advertisement"],
+      heading: "Explore",
+      links: ["Destinations", "Adventures", "City Guides", "Beach Escapes"],
     },
     {
-      title: "Company",
-      links: ["About us", "Contact", "Jobs", "Press kit"],
+      heading: "Resources",
+      links: ["Travel Guides", "Visa Info", "Packing Lists", "Travel Insurance"],
+    },
+    {
+      heading: "Company",
+      links: ["About Us", "Write for Us", "Contact", "Privacy Policy"],
     },
   ];
 
@@ -26,31 +30,49 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer p-10 bg-base-300 text-base-content border-t border-gray-500">
-      {sections.map((section) => (
-        <nav key={section.title}>
-          <header className="footer-title">{section.title}</header>
-          {section.links.map((link) => (
-            <a key={link} className="link link-hover">
-              {link}
-            </a>
-          ))}
-        </nav>
-      ))}
-
-      <nav>
-        <header className="footer-title">Social</header>
-        <div className="grid grid-flow-col gap-4">
-          {socialLinks.map(({ icon: Icon, href }) => (
-            <a key={href} href={href} target="_blank" rel="noreferrer">
-              <Icon className="w-6 h-6" />
-            </a>
+    <footer className="bg-black border-t border-neutral-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+          <div className="col-span-2 md:col-span-1">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xl">✈️</span>
+              <span className="text-lg font-bold text-white">Adventa</span>
+            </div>
+            <p className="text-neutral-500 text-sm leading-relaxed">
+              Real travel stories from real travellers. No sponsored fluff.
+            </p>
+          </div>
+          {sections.map(({ heading, links }) => (
+            <div key={heading}>
+              <p className="text-white text-sm font-semibold mb-3">{heading}</p>
+              <ul className="space-y-2">
+                {links.map((link) => (
+                  <li key={link}>
+                    <a
+                      href="#"
+                      className="text-neutral-500 hover:text-neutral-300 text-sm transition-colors"
+                    >
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
-        <div className="mt-10">
-          <h3 className="font-bold">Copyright © 2023 - All right reserved</h3>
+        <div className="border-t border-neutral-900 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-neutral-600 text-xs">
+            © 2026 WanderLog. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4">
+            {socialLinks.map(({ icon: Icon, href }) => (
+              <a key={href} href={href} target="_blank" rel="noreferrer" className="text-neutral-600 hover:text-neutral-400 transition-colors">
+                <Icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
         </div>
-      </nav>
+      </div>
     </footer>
   );
 };

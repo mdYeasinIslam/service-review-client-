@@ -5,7 +5,10 @@ import "./Home.css";
 import TouristServices from "./TouristService/TouristServices";
 const Home = () => {
   return (
-    <div className="bg-black/50 text-white ">
+    <div
+      className="bg-black/50 text-white "
+      style={{ backgroundColor: "#0a0a0a" }}
+    >
       <Banner />
       {/* Tourist Services */}
       <TouristServices />
