@@ -1,5 +1,5 @@
 import { useState } from "react";
-const DUMMY_PACKAGES = [
+export const DUMMY_PACKAGES = [
   {
     id: 1,
     name: "Bali Serenity Escape",
@@ -169,7 +169,7 @@ const statusColor = (s) =>
   })[s] || { bg: "#f3f4f6", color: "#374151" };
 
 const Overview = () => {
-  const [packages, setPackages] = useState(DUMMY_PACKAGES);
+  const [packages,] = useState(DUMMY_PACKAGES);
   const totalRevenue = RECENT_BOOKINGS.filter(
     (b) => b.status === "Confirmed",
   ).reduce((s, b) => s + b.amount, 0);

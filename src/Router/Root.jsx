@@ -4,7 +4,9 @@ import Main from "../Layout/Main";
 import Secondary from "../Layout/Secondary";
 import Third from "../Layout/Third";
 import AddServices from "../pages/Add-Services/AddServices";
+import AddServicePanel from "../pages/Admin/components/AddServicePanel";
 import Overview from "../pages/Admin/components/Overview";
+import ServicesPanel from "../pages/Admin/components/ServicesPanel";
 import SignIn from "../pages/Auth/SignIn";
 import SignUp from "../pages/Auth/SignUp";
 import Blog from "../pages/Blog/Blog";
@@ -16,9 +18,8 @@ import Profile from "../pages/Profile/Profile";
 import ServiceDetails from "../pages/Services/ServiceDetails";
 import Services from "../pages/Services/Services";
 import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
-import PrivateRoot from "./PrivateRoot";
 import AdminProtectedRoot from "./AdminProtectedRoot";
-import AddService from "../pages/Admin/components/AddService";
+import PrivateRoot from "./PrivateRoot";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -153,7 +154,7 @@ const Root = () => {
           path: "/admin/services",
           element: (
             <AdminProtectedRoot>
-              <Overview />
+              <ServicesPanel />
             </AdminProtectedRoot>
           ),
         },
@@ -161,7 +162,7 @@ const Root = () => {
           path: "/admin/add-service",
           element: (
             <AdminProtectedRoot>
-              <AddService />
+              <AddServicePanel />
             </AdminProtectedRoot>
           ),
         },

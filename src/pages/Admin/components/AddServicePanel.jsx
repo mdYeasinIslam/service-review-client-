@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 import { AuthProvider } from "../../../Context/UserContext";
 import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
-import { toast } from "react-toastify";
 import ImageUpload from "../../SharedPage/ImageUpload/ImageUpload";
 // import img from "../../../assets/image/custom-service/travel-world.jpg";
 
@@ -16,13 +16,6 @@ const CATEGORIES = [
   "Cruise",
 ];
 
-const EMPTY_FORM = {
-  serviceName: "",
-  servicePrice: "",
-  details: "",
-  category: "Beach",
-  status: "Active",
-};
 const Field = ({
   label,
   k,
@@ -59,7 +52,7 @@ const Field = ({
     {/* {errors[k] && <span className="text-xs text-red-600">{errors[k]}</span>} */}
   </div>
 );
-const AddService = () => {
+const AddServicePanel = () => {
   const { imgUrl } = useContext(AuthProvider);
   const axiosPublic = useAxiosPublic();
   const formHandler = async (e) => {
@@ -185,4 +178,4 @@ const AddService = () => {
   );
 };
 
-export default AddService;
+export default AddServicePanel;

@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthProvider } from "../Context/UserContext";
 import { toast } from "react-toastify";
+import Loader from "../base-component/Loader";
 
 const AdminProtectedRoot = ({ children }) => {
   const { user, loading, signOutAuth } = useContext(AuthProvider);
   const location = useLocation();
   if (!loading) {
-    return <span className="loading loading-spinner text-success"></span>;
+    return <Loader/>
   }
   if (user?.email?.includes("admin")) {
     return children;
