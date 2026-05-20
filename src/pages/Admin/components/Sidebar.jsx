@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoLogOutSharp } from "react-icons/io5";
+import { IoMdMenu } from "react-icons/io";
 
 const nav = [
   { id: "overview", label: "Overview", icon: "📊", href: "/admin/overview" },
@@ -34,19 +35,18 @@ const Sidebar = () => {
       >
         {sidebarOpen && (
           <div>
-            <div className="text-xl font-black text-amber-400 tracking-tight">
+            <div className="text-xl font-black text-white tracking-tight">
               Adventa
             </div>
-            <div className="text-xs font-medium text-amber-800">
-              Admin Panel
-            </div>
+            <div className="text-xs font-medium text-base-50">Admin Panel</div>
           </div>
         )}
         <button
           onClick={() => setSidebarOpen((o) => !o)}
-          className="bg-transparent border-none text-amber-700 cursor-pointer text-lg p-1 leading-none hover:text-amber-600"
+          className="bg-transparent border-none text-white cursor-pointer text-lg p-1 "
         >
-          ☰
+          {/* ☰ */}
+          <IoMdMenu />
         </button>
       </div>
 
@@ -92,8 +92,8 @@ const Sidebar = () => {
           }`}
           title="Logout"
         >
-          🔒
-          <IoLogOutSharp />
+          {/* 🔒 */}
+          <IoLogOutSharp className="w-5 h-5" />
           {sidebarOpen && "Logout"}
         </button>
       </div>
