@@ -8,6 +8,7 @@ const PrivateRoot = ({ children }) => {
   if (!loading) {
     return <span className="loading loading-spinner text-success"></span>;
   }
+  
   if (user?.email) {
     return  children ;
   }

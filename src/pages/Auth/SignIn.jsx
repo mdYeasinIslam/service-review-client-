@@ -6,6 +6,7 @@ import { AuthProvider } from "../../Context/UserContext";
 const SignIn = () => {
   const { signIn, google } = useContext(AuthProvider);
   const [error, setError] = useState("");
+  const [isAdminLogin,setIsAdminLogin] = useState(false)
   const navigate = useNavigate();
   const location = useLocation();
   // console.log(location);
@@ -41,18 +42,7 @@ const SignIn = () => {
   };
   return (
     <div className=" bg-black/50 h-screen">
-      {/* <div className={`relative w-full h-[16rem] md:h-[20rem]  bgImage `}>
-        <div
-          className={`absolute font-[cursive]  top-28 w-full ${navControl ? "transition-style1  " : "transition-style2 z-[1]"} font-semibold text-center text-white`}
-        >
-          <span className="text-4xl md:text-6xl block font-bold mb-3 z-20">
-            Account
-          </span>
-          <span className="text-xl md:text-2xl ">
-            Please Log-In your Account
-          </span>
-        </div>
-      </div> */}
+
       <div className="container mx-auto h-full flex flex-col lg:flex-row justify-center items-center gap-5">
         <div className="max-md:hidden w-full h-[30rem]">
           <img

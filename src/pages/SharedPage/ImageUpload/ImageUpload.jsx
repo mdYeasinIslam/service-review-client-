@@ -1,11 +1,11 @@
 // ImageUpload.js
-import React, { useContext, useState } from "react";
 import axios from "axios";
+import { useContext, useState } from "react";
 import { AuthProvider } from "../../../Context/UserContext";
 
 const ImageUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const { setImgUrl, imgUrl } = useContext(AuthProvider);
+  const { setImgUrl } = useContext(AuthProvider);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -29,8 +29,8 @@ const ImageUpload = () => {
           params: {
             key: "708ba90fcdb534bfd76013da1ac46b05", // Replace with your ImgBB API key
           },
-        }
-      ); 
+        },
+      );
 
       console.log("File uploaded successfully:", response.data);
 
@@ -40,14 +40,14 @@ const ImageUpload = () => {
       console.error("Error uploading file:", error);
     }
   };
-  // console.log(selectedFile);
-  // console.log(imgUrl);
-
   return (
-   
-      <input onBlur={handleUpload} type="file" onChange={handleFileChange} className="inline w-1/2"/>
-
-   
+    <input
+      onBlur={handleUpload}
+      type="file"
+      onChange={handleFileChange}
+      className="inline w-1/2"
+      required={false}
+    />
   );
 };
 

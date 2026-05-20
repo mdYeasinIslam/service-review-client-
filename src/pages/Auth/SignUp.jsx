@@ -75,16 +75,15 @@ const SignUp = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Photo URL</span>
+                <span className="label-text">Upload Photo</span>
               </label>
-              <input
+              {/* <input
                 type="url"
                 name="photoURL"
-                value={imgUrl}
                 placeholder={imgUrl}
                 className="input input-bordered mb-2"
                 readOnly
-              />
+              /> */}
               <ImageUpload />
             </div>
             <div className="form-control">
