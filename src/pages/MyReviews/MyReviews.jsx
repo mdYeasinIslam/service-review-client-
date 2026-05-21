@@ -4,7 +4,7 @@ import ShowReviews from "./ShowReviews";
 import { useAxiosPublic } from "../../hooks/useAxiosPublic";
 
 const MyReviews = () => {
-  const { navControl, user } = useContext(AuthProvider);
+  const {  user } = useContext(AuthProvider);
   const [reviews, setReviews] = useState([]);
   const [reRender, setReRender] = useState(true);
   const [loading, setLoading] = useState(true);
