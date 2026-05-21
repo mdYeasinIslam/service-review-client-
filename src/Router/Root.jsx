@@ -20,6 +20,7 @@ import Services from "../pages/Services/Services";
 import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import AdminProtectedRoot from "./AdminProtectedRoot";
 import PrivateRoot from "./PrivateRoot";
+import MyReviews from "../pages/MyReviews/MyReviews";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -63,11 +64,11 @@ const Root = () => {
           element: <Services />,
         },
         {
-          path: '/contact',
-          element:<Contact/>
+          path: "/contact",
+          element: <Contact />,
         },
         // {
-        //   path: "/my-reviews",
+        //   path: "/admin/reviews",
         //   element: (
         //     <PrivateRoot>
         //       <MyReviews />
@@ -75,8 +76,8 @@ const Root = () => {
         //   ),
         // },
         {
-          path: '/about',
-          element:<AboutPage/>
+          path: "/about",
+          element: <AboutPage />,
         },
         // {
         //   path: "/add-service",
@@ -171,6 +172,14 @@ const Root = () => {
           element: (
             <AdminProtectedRoot>
               <AddServicePanel />
+            </AdminProtectedRoot>
+          ),
+        },
+        {
+          path: "/admin/reviews",
+          element: (
+            <AdminProtectedRoot>
+              <MyReviews />
             </AdminProtectedRoot>
           ),
         },

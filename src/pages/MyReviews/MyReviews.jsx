@@ -34,7 +34,7 @@ const MyReviews = () => {
   }
   return (
     <div>
-      <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage`}>
+      {/* <div className={`relative w-full h-[16rem] md:h-[20rem] bgImage`}>
         <div
           className={`absolute font-[cursive]  top-28 w-full ${
             navControl ? "transition-style1  " : "transition-style2 "
@@ -45,20 +45,20 @@ const MyReviews = () => {
           </span>
           <span className="text-xl md:text-2xl ">Lets check all review</span>
         </div>
-      </div>
+      </div> */}
       <div className="overflow-x-auto bg-base-300 py-10  ">
         {loading ? (
           <thead className="block text-center ">
             <tr className="loading loading-spinner w-8 h-8 text-success"></tr>
           </thead>
         ) : (
-          <table className="table border-2 border-black md:w-[80%] mx-auto">
+          <table className="table border-2 border-gray-400 md:w-[80%] mx-auto">
             {/* head */}
 
             {/* tbody */}
             {reviews.length > 0 ? (
               <>
-                <thead className="border-2 border-dotted border-black">
+                <thead className="border-2 border-dotted text-white border-gray-400">
                   <tr>
                     {/* <th></th> */}
                     <th className="w-1/4">Tourist Area</th>

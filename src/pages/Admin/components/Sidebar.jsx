@@ -4,7 +4,7 @@ import { IoLogOutSharp } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
 
 const nav = [
-  { id: "overview", label: "Overview", icon: "📊", href: "/admin/overview" },
+  // { id: "overview", label: "Overview", icon: "📊", href: "/admin/overview" },
   { id: "services", label: "Services", icon: "✈️", href: "/admin/services" },
   {
     id: "add-service",
@@ -12,6 +12,12 @@ const nav = [
     icon: "➕",
     href: "/admin/add-service",
   },
+  {
+    id: 'reviews',
+    label:"Reviews",
+    icon:"📝",
+    href:"/admin/reviews"
+  }
 ];
 const Sidebar = () => {
   const [loggedOut, setLoggedOut] = useState(false);
