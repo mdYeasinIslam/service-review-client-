@@ -3,6 +3,7 @@ import AdminLayout from "../Layout/AdminLayout";
 import Main from "../Layout/Main";
 import Secondary from "../Layout/Secondary";
 import Third from "../Layout/Third";
+import AboutPage from "../pages/About/AboutPage";
 import AddServicePanel from "../pages/Admin/components/AddServicePanel";
 import Overview from "../pages/Admin/components/Overview";
 import ServicesPanel from "../pages/Admin/components/ServicesPanel";
@@ -10,17 +11,15 @@ import SignIn from "../pages/Auth/SignIn";
 import SignUp from "../pages/Auth/SignUp";
 import Blog from "../pages/Blog/Blog";
 import CheckOut from "../pages/CheckOutBox/CheckOut";
+import Contact from "../pages/contact/Contact";
 import Details from "../pages/Home/Display-services/Details";
 import Home from "../pages/Home/Home";
-import MyReviews from "../pages/MyReviews/MyReviews";
 import Profile from "../pages/Profile/Profile";
 import ServiceDetails from "../pages/Services/ServiceDetails";
 import Services from "../pages/Services/Services";
 import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import AdminProtectedRoot from "./AdminProtectedRoot";
 import PrivateRoot from "./PrivateRoot";
-import AboutPage from "../pages/About/AboutPage";
-import Contact from "../pages/contact/Contact";
 const Root = () => {
   const router = createBrowserRouter([
     {
