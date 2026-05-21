@@ -3,7 +3,6 @@ import AdminLayout from "../Layout/AdminLayout";
 import Main from "../Layout/Main";
 import Secondary from "../Layout/Secondary";
 import Third from "../Layout/Third";
-import AddServices from "../pages/Add-Services/AddServices";
 import AddServicePanel from "../pages/Admin/components/AddServicePanel";
 import Overview from "../pages/Admin/components/Overview";
 import ServicesPanel from "../pages/Admin/components/ServicesPanel";
@@ -20,6 +19,7 @@ import Services from "../pages/Services/Services";
 import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import AdminProtectedRoot from "./AdminProtectedRoot";
 import PrivateRoot from "./PrivateRoot";
+import AboutPage from "../pages/About/AboutPage";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -71,13 +71,17 @@ const Root = () => {
           ),
         },
         {
-          path: "/add-service",
-          element: (
-            <PrivateRoot>
-              <AddServices />
-            </PrivateRoot>
-          ),
+          path: '/about',
+          element:<AboutPage/>
         },
+        // {
+        //   path: "/add-service",
+        //   element: (
+        //     <PrivateRoot>
+        //       <AddServices />
+        //     </PrivateRoot>
+        //   ),
+        // },
         {
           path: "/profile",
           element: (
