@@ -49,7 +49,11 @@ const Root = () => {
         },
         {
           path: "/services/:id",
-          element: <ServiceDetails />,
+          element: (
+            <PrivateRoot>
+              <ServiceDetails />
+            </PrivateRoot>
+          ),
           loader: ({ params }) =>
             fetch(`https://adventa-server.vercel.app/services/${params.id}`),
         },
@@ -70,7 +74,7 @@ const Root = () => {
           path: "/about",
           element: <AboutPage />,
         },
-        
+
         {
           path: "/profile",
           element: (
