@@ -77,7 +77,7 @@ const NavbarCopy = () => {
               <>
                 <button
                   onClick={signOut}
-                  className="px-2 py-1 text-neutral-400 hover:text-white transition-colors"
+                  className="px-2 py-1 text-neutral-400 hover:bg-[var(--primary-button-500)] hover:text-white transition-colors"
                 >
                   Sign Out
                 </button>
@@ -138,7 +138,7 @@ const NavbarCopy = () => {
               <>
                 <button
                   onClick={signOut}
-                  className="text-left text-neutral-400 hover:text-white transition-colors"
+                  className="text-left text-neutral-400 hover:bg-amber-400 hover:text-white transition-colors"
                 >
                   Sign Out
                 </button>

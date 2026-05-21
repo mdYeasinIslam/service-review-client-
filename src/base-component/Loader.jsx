@@ -1,8 +1,8 @@
 
-const Loader = () => {
+const Loader = ({className}) => {
   return (
-    <p className="text-center py-3 ">
-      <span className="loading loading-spinner text-success w-8 h-8"></span>
+    <p className={`${className} text-center py-3`}>
+      <span className="loading loading-spinner text-success w-12 h-12"></span>
     </p>
   );
 }
