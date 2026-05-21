@@ -21,9 +21,14 @@ const SignIn = () => {
   const signInAuth = (email, password, form) => {
     signIn(email, password)
       .then(() => {
-        form.reset();
-        navigate(from, { replace: true });
         toast("You are successfully log-In");
+        if (email?.includes("admin")) {
+          navigate("/admin/services");
+          form.reset();
+          return;
+        }
+        navigate(from, { replace: true });
+        form.reset();
       })
       .catch((e) => {
         // console.error(e.message);
@@ -71,9 +76,10 @@ const SignIn = () => {
             <div className="form-control">
               <input
                 type="email"
-                value={
+                defaultValue={
                   (isAdminLogin && "admin@admin.com") ||
-                  (isGuestLogin && "test@test.com")
+                  (isGuestLogin && "test@test.com") ||
+                  ""
                 }
                 name="email"
                 placeholder="Email"
@@ -85,7 +91,9 @@ const SignIn = () => {
               <input
                 type="password"
                 name="password"
-                value={(isAdminLogin && "aassdd") || (isGuestLogin && "aassdd")}
+                defaultValue={
+                  (isAdminLogin && "aassdd") || (isGuestLogin && "aassdd") || ""
+                }
                 placeholder="password"
                 className="input input-bordered"
                 required

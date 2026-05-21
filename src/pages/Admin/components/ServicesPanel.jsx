@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Loader from "../../../base-component/Loader";
 import useServices from "../../../hooks/useServices";
+import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const CATEGORIES = [
   "Beach",
@@ -23,33 +26,44 @@ const statusColor = (s) =>
     Cancelled: { bg: "bg-red-50", color: "text-red-900" },
   })[s] || { bg: "bg-gray-100", color: "text-gray-700" };
 
-export default function ServicesPanel({ onAdd }) {
+export default function ServicesPanel() {
   const { services, loading } = useServices();
 
   const [search, setSearch] = useState("");
   const [filterCat, setFilterCat] = useState("All");
-  const [deleting, setDeleting] = useState(null);
+  const [loadingState, setLoadingState] = useState(false);
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const filtered = services?.filter(
     (p) =>
       (filterCat === "All" || p?.category === filterCat) &&
-      (p?.name.toLowerCase().includes(search?.toLowerCase()) ),
+      p?.name.toLowerCase().includes(search?.toLowerCase()),
   );
-  if (loading) {
+  const handleDelete = async (id) => {
+    setLoadingState(true);
+    const res = await axiosPublic.delete(`/services/${id}`);
+    if (res.data.success) {
+      toast.success("Service deleted successfully");
+      setLoadingState(false);
+    }
+  };
+  const onAddFn = () => {
+    navigate("/admin/add-service");
+  };
+  if (loading || loadingState) {
     return <Loader />;
   }
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between items-start flex-wrap gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-white m-0">
-            Tour Packages
-          </h1>
+          <h1 className="text-2xl font-bold text-white m-0">Tour Packages</h1>
           <p className="mt-1 text-slate-300 text-sm">
             {services?.length} packages available
           </p>
         </div>
         <button
-          onClick={onAdd}
+          onClick={onAddFn}
           className="bg-amber-600 text-white border-none rounded-lg px-5 py-2 font-bold text-sm cursor-pointer flex items-center gap-1.5 hover:bg-amber-700"
         >
           + Add New Package
@@ -58,7 +72,7 @@ export default function ServicesPanel({ onAdd }) {
 
       <div className="flex gap-3 flex-wrap">
         <input
-        //   value={search}
+          //   value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="🔍 Search your destinations..."
           className="flex-1 min-w-60 px-3.5 py-2.5 border-2 border-amber-100 rounded-lg text-sm outline-none bg-white text-amber-950"
@@ -89,7 +103,7 @@ export default function ServicesPanel({ onAdd }) {
             <div
               key={_id}
               className={`bg-black/20 border border-amber-100 rounded-2xl flex overflow-hidden transition-opacity duration-300 ${
-                deleting === p.id ? "opacity-40" : "opacity-100"
+                loading ? "opacity-40" : "opacity-100"
               }`}
             >
               <img
@@ -117,7 +131,7 @@ export default function ServicesPanel({ onAdd }) {
                       Edit
                     </button>
                     <button
-                      onClick={() => setDeleting(p.id)}
+                      onClick={() => handleDelete(p.id)}
                       className="bg-red-50 text-red-600 border-none rounded-lg px-3.5 py-1.5 text-xs font-semibold cursor-pointer hover:bg-red-100"
                     >
                       Delete

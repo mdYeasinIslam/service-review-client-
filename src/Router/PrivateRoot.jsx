@@ -9,9 +9,9 @@ const PrivateRoot = ({ children }) => {
   if (!loading) {
     return <Loader/>
   }
-  
+
   if (user?.email) {
-    return  children ;
+    return children;
   }
   return <Navigate to="/signIn" state={{ from: location }} replace />;
 };

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthProvider } from "../../../Context/UserContext";
 
@@ -9,11 +9,12 @@ const NavbarCopy = () => {
   const [show, setShow] = useState(false);
   const { user, signOutAuth, navHandler, navControl } =
     useContext(AuthProvider);
-
+  const navigate = useNavigate();
   const signOut = () => {
     signOutAuth()
       .then(() => {
         toast("You are successfully log-Out");
+        navigate("/signIn");
       })
       .catch((e) => {
         console.error(e);
