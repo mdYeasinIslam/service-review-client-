@@ -20,6 +20,7 @@ import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import AdminProtectedRoot from "./AdminProtectedRoot";
 import PrivateRoot from "./PrivateRoot";
 import AboutPage from "../pages/About/AboutPage";
+import Contact from "../pages/contact/Contact";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -63,13 +64,17 @@ const Root = () => {
           element: <Services />,
         },
         {
-          path: "/my-reviews",
-          element: (
-            <PrivateRoot>
-              <MyReviews />
-            </PrivateRoot>
-          ),
+          path: '/contact',
+          element:<Contact/>
         },
+        // {
+        //   path: "/my-reviews",
+        //   element: (
+        //     <PrivateRoot>
+        //       <MyReviews />
+        //     </PrivateRoot>
+        //   ),
+        // },
         {
           path: '/about',
           element:<AboutPage/>

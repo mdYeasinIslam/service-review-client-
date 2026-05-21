@@ -34,7 +34,8 @@ const NavbarCopy = () => {
     { to: "/", label: "Home" },
     { to: "/services", label: "Service" },
     { to: "/blog", label: "Blog" },
-    { to: "/my-reviews", label: "My-Reviews" },
+    // { to: "/my-reviews", label: "My-Reviews" },
+    { to: "/contact", label: "Contact" },
     { to: "/about", label: "About Us" },
     // { to: "/add-service", label: "Add-Service" },
   ];
