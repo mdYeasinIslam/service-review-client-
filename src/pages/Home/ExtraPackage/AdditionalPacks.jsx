@@ -4,7 +4,7 @@ import img1 from "../../../assets/image/packs2.webp";
 import img from "../../../assets/image/packs3.avif";
 const AdditionalPacks = () => {
   return (
-    <div className="lg:grid grid-cols-2  rounded-xl py-10 md:py-20">
+    <div className="lg:grid grid-cols-2  rounded-xl pb-10 md:pb-20">
       <div className="md:p-12 p-2 bg-indigo-950 h-full md:rounded-l-xl">
         <h3 className="text-xl mt-5 font-semibold font-[cursive]">
           Just Relax And Enjoy

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthProvider } from "../../../Context/UserContext";
 
@@ -9,11 +9,12 @@ const NavbarCopy = () => {
   const [show, setShow] = useState(false);
   const { user, signOutAuth, navHandler, navControl } =
     useContext(AuthProvider);
-
+  const navigate = useNavigate();
   const signOut = () => {
     signOutAuth()
       .then(() => {
         toast("You are successfully log-Out");
+        navigate("/signIn");
       })
       .catch((e) => {
         console.error(e);
@@ -34,8 +35,10 @@ const NavbarCopy = () => {
     { to: "/", label: "Home" },
     { to: "/services", label: "Service" },
     { to: "/blog", label: "Blog" },
-    { to: "/my-reviews", label: "My-Reviews" },
-    { to: "/add-service", label: "Add-Service" },
+    // { to: "/my-reviews", label: "My-Reviews" },
+    { to: "/contact", label: "Contact" },
+    { to: "/about", label: "About Us" },
+    // { to: "/add-service", label: "Add-Service" },
   ];
 
   return (
@@ -76,7 +79,7 @@ const NavbarCopy = () => {
               <>
                 <button
                   onClick={signOut}
-                  className="px-2 py-1 text-neutral-400 hover:text-white transition-colors"
+                  className="px-2 py-1 text-neutral-400 hover:bg-[var(--primary-button-500)] hover:text-white transition-colors"
                 >
                   Sign Out
                 </button>
@@ -137,7 +140,7 @@ const NavbarCopy = () => {
               <>
                 <button
                   onClick={signOut}
-                  className="text-left text-neutral-400 hover:text-white transition-colors"
+                  className="text-left text-neutral-400 hover:bg-amber-400 hover:text-white transition-colors"
                 >
                   Sign Out
                 </button>

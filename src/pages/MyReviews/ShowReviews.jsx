@@ -48,7 +48,7 @@ const ShowReviews = ({ rev, setReRender, reRender }) => {
     <tbody>
       {/* row 1 */}
 
-      <tr className="bg-base-200">
+      <tr className="bg-base-200 border border-white">
         {/* <th className="md:w-4">1</th> */}
         <td className=" md:w-1/5 font-bold">
           {placeName} <br />{" "}

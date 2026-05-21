@@ -1,20 +1,25 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import AdminLayout from "../Layout/AdminLayout";
 import Main from "../Layout/Main";
-import Home from "../pages/Home/Home";
-import Services from "../pages/Services/Services";
 import Secondary from "../Layout/Secondary";
+import Third from "../Layout/Third";
+import AboutPage from "../pages/About/AboutPage";
+import AddServicePanel from "../pages/Admin/components/AddServicePanel";
+import ServicesPanel from "../pages/Admin/components/ServicesPanel";
 import SignIn from "../pages/Auth/SignIn";
 import SignUp from "../pages/Auth/SignUp";
-import Third from "../Layout/Third";
 import Blog from "../pages/Blog/Blog";
-import PrivateRoot from "./PrivateRoot";
-import ServiceDetails from "../pages/Services/ServiceDetails";
-import AddServices from "../pages/Add-Services/AddServices";
-import Details from "../pages/Home/Display-services/Details";
-import Profile from "../pages/Profile/Profile";
-import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import CheckOut from "../pages/CheckOutBox/CheckOut";
+import Contact from "../pages/contact/Contact";
+import Details from "../pages/Home/Display-services/Details";
+import Home from "../pages/Home/Home";
 import MyReviews from "../pages/MyReviews/MyReviews";
+import Profile from "../pages/Profile/Profile";
+import ServiceDetails from "../pages/Services/ServiceDetails";
+import Services from "../pages/Services/Services";
+import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
+import AdminProtectedRoot from "./AdminProtectedRoot";
+import PrivateRoot from "./PrivateRoot";
 const Root = () => {
   const router = createBrowserRouter([
     {
@@ -44,7 +49,11 @@ const Root = () => {
         },
         {
           path: "/services/:id",
-          element: <ServiceDetails />,
+          element: (
+            <PrivateRoot>
+              <ServiceDetails />
+            </PrivateRoot>
+          ),
           loader: ({ params }) =>
             fetch(`https://adventa-server.vercel.app/services/${params.id}`),
         },
@@ -58,21 +67,14 @@ const Root = () => {
           element: <Services />,
         },
         {
-          path: "/my-reviews",
-          element: (
-            <PrivateRoot>
-              <MyReviews />
-            </PrivateRoot>
-          ),
+          path: "/contact",
+          element: <Contact />,
         },
         {
-          path: "/add-service",
-          element: (
-            <PrivateRoot>
-              <AddServices />
-            </PrivateRoot>
-          ),
+          path: "/about",
+          element: <AboutPage />,
         },
+
         {
           path: "/profile",
           element: (
@@ -118,6 +120,56 @@ const Root = () => {
         {
           path: "/signUp",
           element: <SignUp />,
+        },
+      ],
+    },
+    {
+      path: "/admin",
+      element: (
+        <AdminProtectedRoot>
+          <AdminLayout />
+        </AdminProtectedRoot>
+      ),
+      children: [
+        {
+          path: "/admin",
+          element: (
+            <AdminProtectedRoot>
+              <ServicesPanel />
+            </AdminProtectedRoot>
+          ),
+        },
+        // {
+        //   path: "/admin/overview",
+        //   element: (
+        //     <AdminProtectedRoot>
+        //       <Overview />
+        //     </AdminProtectedRoot>
+        //   ),
+        // },
+        {
+          path: "/admin/services",
+          element: (
+            <AdminProtectedRoot>
+              <ServicesPanel />
+            </AdminProtectedRoot>
+          ),
+        },
+        {
+          path: "/admin/add-service",
+          element: (
+            <AdminProtectedRoot>
+              <AddServicePanel />
+            </AdminProtectedRoot>
+          ),
+        },
+        {
+          path: "/admin/reviews",
+          element: (
+            <AdminProtectedRoot>
+              <MyReviews />
+            </AdminProtectedRoot>
+          ),
         },
       ],
     },

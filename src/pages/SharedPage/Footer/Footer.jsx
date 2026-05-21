@@ -6,14 +6,22 @@ const Footer = () => {
     {
       heading: "Explore",
       links: ["Destinations", "Adventures", "City Guides", "Beach Escapes"],
+      isClickable: false,
     },
     {
       heading: "Resources",
       links: ["Travel Guides", "Visa Info", "Packing Lists", "Travel Insurance"],
+      isClickable: false,
     },
     {
       heading: "Company",
-      links: ["About Us", "Write for Us", "Contact", "Privacy Policy"],
+      links: [
+        { label: "About Us", link: "/about" },
+        { label: "Blog", link: "/blog" },
+        { label: "Contact", link: "/contact" },
+        { label: "Privacy Policy", link: "/privacy" },
+      ],
+      isClickable: true,
     },
   ];
 
@@ -31,7 +39,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-black border-t border-neutral-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-3">
@@ -42,20 +50,29 @@ const Footer = () => {
               Real travel stories from real travellers. No sponsored fluff.
             </p>
           </div>
-          {sections.map(({ heading, links }) => (
+          {sections.map(({ heading, links, isClickable }) => (
             <div key={heading}>
               <p className="text-white text-sm font-semibold mb-3">{heading}</p>
               <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-neutral-500 hover:text-neutral-300 text-sm transition-colors"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
+                {links.map((link) => {
+                  const text = isClickable ? link.label : link;
+                  const href = isClickable ? link.link : "#";
+                  
+                  return (
+                    <li key={text}>
+                      {isClickable ? (
+                        <a
+                          href={href}
+                          className="text-neutral-500 hover:text-neutral-300 text-sm transition-colors"
+                        >
+                          {text}
+                        </a>
+                      ) : (
+                        <span className="text-neutral-500 text-sm">{text}</span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

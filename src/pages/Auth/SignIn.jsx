@@ -6,9 +6,10 @@ import { AuthProvider } from "../../Context/UserContext";
 const SignIn = () => {
   const { signIn, google } = useContext(AuthProvider);
   const [error, setError] = useState("");
+  const [isAdminLogin, setIsAdminLogin] = useState(false);
+  const [isGuestLogin, setIsGuestLogin] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location);
   const from = location.state?.from?.pathname || "/";
   const formHandler = (e) => {
     e.preventDefault();
@@ -20,9 +21,14 @@ const SignIn = () => {
   const signInAuth = (email, password, form) => {
     signIn(email, password)
       .then(() => {
-        form.reset();
-        navigate(from, { replace: true });
         toast("You are successfully log-In");
+        if (email?.includes("admin")) {
+          navigate("/admin/services");
+          form.reset();
+          return;
+        }
+        navigate(from, { replace: true });
+        form.reset();
       })
       .catch((e) => {
         // console.error(e.message);
@@ -39,20 +45,18 @@ const SignIn = () => {
       })
       .catch((e) => setError(e.message));
   };
+
+  const handleAdminChange = (e) => {
+    setIsAdminLogin(e.target.checked);
+    if (e.target.checked) setIsGuestLogin(false);
+  };
+
+  const handleGuestChange = (e) => {
+    setIsGuestLogin(e.target.checked);
+    if (e.target.checked) setIsAdminLogin(false);
+  };
   return (
     <div className=" bg-black/50 h-screen">
-      {/* <div className={`relative w-full h-[16rem] md:h-[20rem]  bgImage `}>
-        <div
-          className={`absolute font-[cursive]  top-28 w-full ${navControl ? "transition-style1  " : "transition-style2 z-[1]"} font-semibold text-center text-white`}
-        >
-          <span className="text-4xl md:text-6xl block font-bold mb-3 z-20">
-            Account
-          </span>
-          <span className="text-xl md:text-2xl ">
-            Please Log-In your Account
-          </span>
-        </div>
-      </div> */}
       <div className="container mx-auto h-full flex flex-col lg:flex-row justify-center items-center gap-5">
         <div className="max-md:hidden w-full h-[30rem]">
           <img
@@ -72,6 +76,11 @@ const SignIn = () => {
             <div className="form-control">
               <input
                 type="email"
+                defaultValue={
+                  (isAdminLogin && "admin@admin.com") ||
+                  (isGuestLogin && "test@test.com") ||
+                  ""
+                }
                 name="email"
                 placeholder="Email"
                 className="input input-bordered"
@@ -82,6 +91,9 @@ const SignIn = () => {
               <input
                 type="password"
                 name="password"
+                defaultValue={
+                  (isAdminLogin && "aassdd") || (isGuestLogin && "aassdd") || ""
+                }
                 placeholder="password"
                 className="input input-bordered"
                 required
@@ -102,6 +114,31 @@ const SignIn = () => {
               </Link>
             </p>
           </form>
+          <div className="form-control flex flex-row items-center gap-1">
+            <input
+              type="checkbox"
+              name="admin"
+              checked={isAdminLogin}
+              onChange={handleAdminChange}
+              className="checkbox checkbox-primary"
+            />
+            <label className="label cursor-pointer">
+              <span className="label-text">Login as Admin</span>
+            </label>
+          </div>
+          <div className="form-control flex flex-row items-center gap-1">
+            <input
+              type="checkbox"
+              name="guest"
+              checked={isGuestLogin}
+              onChange={handleGuestChange}
+              className="checkbox checkbox-primary"
+            />
+            <label className="label cursor-pointer">
+              <span className="label-text">Login as Guest User</span>
+            </label>
+          </div>
+
           <button
             onClick={googleAuth}
             className="w-full btn hover:border-white border border-primary mt-5"
